@@ -1,6 +1,8 @@
 ---
 title: "Modular Resources for TAI-Related Grant Proposals"
-subtitle: GW Trustworthy AI Initiative
+subtitle: An Unofficial Guide
+author: Ryan Watkins
+date: 2026-09-27
 ---
 
 # Overview
