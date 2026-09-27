@@ -7,6 +7,7 @@ project:
     - proposal-support-toolkit.qmd
     - science-harnesses.qmd
 website:
+  site-url: https://ryanrwatkins.github.io/LLM_research_guides/
   title: LLM Research Guides
   navbar:
     background: "#033C5A"
