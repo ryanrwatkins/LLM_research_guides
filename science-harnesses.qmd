@@ -5,7 +5,7 @@ author: Ryan Watkins
 date: 2026-09-27
 ---
 
-# **From General-Purpose Agents to Reproducible Scientific Workflows** {#from-general-purpose-agents-to-reproducible-scientific-workflows}
+# From General-Purpose Agents to Reproducible Scientific Workflows {#from-general-purpose-agents-to-reproducible-scientific-workflows}
 
 Large language models are a little like **wild horses that need to be harnessed**.
 
@@ -65,7 +65,7 @@ The set-ups I’m documenting are for when you want your research to be reproduc
 
 ---
 
-# **1\. Start With the Research, Not the AI Tool** {#section-1--start-with-the-research--not-the-ai-tool}
+# 1\. Start With the Research, Not the AI Tool {#section-1--start-with-the-research--not-the-ai-tool}
 
 Once the research question and intended role of the LLM are clear, the next question is what **research controls** are needed around it. The more consequential the LLM is to the production of findings, the less appropriate it is to rely on an unconstrained chatbot interaction. Instead, researchers can progressively add controls through the harness: fixed context, structured outputs, deterministic preprocessing and validation, explicit tools, permissions, logging, tests, and human review. The harness therefore becomes part of the methodological design rather than merely the interface used to access the model.
 
@@ -152,7 +152,7 @@ Or that is to say:
 
 ---
 
-# **2\. A Continuum of Harness Choices** {#section-2--a-continuum-of-harness-choices}
+# 2\. A Continuum of Harness Choices {#section-2--a-continuum-of-harness-choices}
 
 Researchers can think of harnesses along a continuum.
 
@@ -184,7 +184,7 @@ A research team whose LLM workflow directly produces study findings may decide t
 
 ---
 
-## 2.1. Why OpenCode Is an Interesting Middle Ground {#section-2-1--why-opencode-is-an-interesting-middle-ground}
+## 2.1 Why OpenCode Is an Interesting Middle Ground {#section-2-1--why-opencode-is-an-interesting-middle-ground}
 
 OpenCode provides many of the agent capabilities associated with commercial systems such as Claude Code and Codex while allowing researchers to choose the model and computing infrastructure.
 
@@ -227,7 +227,7 @@ OpenCode
 
 For many researchers, this may provide a useful compromise between an opaque commercial agent and building an entire scientific workflow from scratch.
 
-## 2.3 Comparative Logging Capabilities
+## 2.2 Comparative Logging Capabilities {#comparative-logging-capabilities}
 
 | Feature | OpenCode | Proprietary Platforms (Claude, Codex/OpenAI) |
 | ----- | ----- | ----- |
@@ -238,9 +238,7 @@ For many researchers, this may provide a useful compromise between an opaque com
 
 ---
 
----
-
-# **3\. Architecture Choices** {#section-3--architecture-choices}
+# 3\. Architecture Choices {#section-3--architecture-choices}
 
 The location of the harness, model, and data can also be separated.
 
@@ -329,7 +327,7 @@ ollama --version
 
 ---
 
-### **A2. Install an Open-Weight Coding Model** {#a2--install-an-open-weight-coding-model}
+### A2. Install an Open-Weight Coding Model {#a2--install-an-open-weight-coding-model}
 
 For a higher-memory Apple Silicon Mac, a useful starting point is:
 
@@ -349,7 +347,7 @@ ollama list
 
 ---
 
-### **A3. Install OpenCode** {#a3--install-opencode}
+### A3. Install OpenCode {#a3--install-opencode}
 
 Install OpenCode:
 
@@ -379,7 +377,7 @@ opencode --version
 
 ---
 
-### **A4. Confirm That Ollama Is Running** {#a4--confirm-that-ollama-is-running}
+### A4. Confirm That Ollama Is Running {#a4--confirm-that-ollama-is-running}
 
 Check the installed models:
 
@@ -397,7 +395,7 @@ A successful response should return JSON describing the locally installed models
 
 ---
 
-### **A5. Launch OpenCode in the Research Project** {#a5--launch-opencode-in-the-research-project}
+### A5. Launch OpenCode in the Research Project {#a5--launch-opencode-in-the-research-project}
 
 Move into the project directory:
 
@@ -425,7 +423,7 @@ ollama/qwen3-coder:30b
 
 ---
 
-### **A6. Optional: Configure Ollama Globally in OpenCode** {#a6--optional--configure-ollama-globally-in-opencode}
+### A6. Optional: Configure Ollama Globally in OpenCode {#a6--optional--configure-ollama-globally-in-opencode}
 
 If OpenCode does not automatically detect the local Ollama server, or if you want the models available in every OpenCode project, create a global configuration.
 
@@ -468,7 +466,7 @@ You can also set the model as the OpenCode default:
 ```
 ---
 
-### **A7. Optional: Enable Web Search** {#a7--optional--enable-web-search}
+### A7. Optional: Enable Web Search {#a7--optional--enable-web-search}
 
 If web research is needed as part of the workflow, launch OpenCode with:
 
@@ -480,7 +478,7 @@ This allows the OpenCode agent to combine local files and tools with web researc
 
 ---
 
-### **Advantages of the Fully Local Architecture** {#advantages-of-the-fully-local-architecture}
+### Advantages of the Fully Local Architecture {#advantages-of-the-fully-local-architecture}
 
 The main advantages are simplicity and control:
 
@@ -500,7 +498,7 @@ The tradeoff is that **model capability is constrained by the computer's availab
 
 ## 3.2 OPTION B — OpenCode and Ollama Both on GW HPC {#section-3-2-option-b---opencode-and-ollama-both-on-gw-hpc}
 
-### **When to use** {#when-to-use-1}
+### When to use {#when-to-use-1}
 
 Use this architecture when:
 
@@ -523,7 +521,7 @@ GW HPC compute node
 
 ---
 
-### **B1. Log Into Pegasus** {#b1--log-into-pegasus}
+### B1. Log Into Pegasus {#b1--log-into-pegasus}
 
 ```bash
 ssh [your login id]@pegasus.arc.gwu.edu
@@ -537,13 +535,13 @@ sinfo -a
 
 ---
 
-### **B2. Request a GPU** {#b2--request-a-gpu}
+### B2. Request a GPU {#b2--request-a-gpu}
 
 We have three types of GPU currently available with HPC. Below is how you request one of these.
 
 ---
 
-### **L40S 48 GB**
+#### L40S 48 GB
 
 ```bash
 srun \
@@ -559,7 +557,7 @@ This was a successful configuration for `qwen3-coder:30b`.
 
 ---
 
-### **A100 80 GB**
+#### A100 80 GB
 
 ```bash
 srun --partition=gpu --gres=gpu:a100:1 --cpus-per-task=4 --mem=80G --time=02:00:00 --pty bash
@@ -567,7 +565,7 @@ srun --partition=gpu --gres=gpu:a100:1 --cpus-per-task=4 --mem=80G --time=02:00:
 
 ---
 
-### **GH200 Grace Hopper**
+#### GH200 Grace Hopper
 
 ```bash
 srun \
@@ -616,19 +614,19 @@ ml ollama
 
 Then
 
-### **L40S**
+#### L40S
 
 ```bash
 OLLAMA_CONTEXT_LENGTH=65536 ollama serve &
 ```
 
-### **A100**
+#### A100
 
 ```bash
 OLLAMA_CONTEXT_LENGTH=131072 ollama serve &
 ```
 
-### **GH200**
+#### GH200
 
 ```bash
 OLLAMA_CONTEXT_LENGTH=131072 ollama serve &
@@ -636,7 +634,7 @@ OLLAMA_CONTEXT_LENGTH=131072 ollama serve &
 
 Potentially increase toward 256K after checking GPU memory use and model behavior.
 
-### **Model/GPU combinations tested or considered**
+#### Model/GPU combinations tested or considered
 
 | GPU | Model | Starting context |
 | ----- | ----- | ----- |
@@ -728,7 +726,8 @@ Launch with web search enabled:
 OPENCODE_ENABLE_EXA=1 opencode
 ```
 
-CNTL \+ P to see available commands  
+CNTL \+ P to see available commands
+
 ---
 
 ### B7. Simple Website Test {#b7--simple-website-test}
@@ -770,7 +769,7 @@ Prompt:
 
 > Research current publicly available data on electric vehicles from authoritative sources. Build an interactive comparison app that lets users filter by price, range, and manufacturer. Include citations to the sources, a methodology page, responsive design, and automated tests. Verify the app works before finishing.
 
-### **Pilot result**
+#### Pilot result
 
 Approximately **18 minutes**.
 
@@ -867,7 +866,7 @@ Open-weight model
 GPU inference
 ```
 
-### **When to use** {#when-to-use-2}
+### When to use {#when-to-use-2}
 
 OpenCode operates on the local computer and therefore has access to resources that the researcher may not want to duplicate on HPC:
 
@@ -883,7 +882,7 @@ The full project does not have to be copied onto HPC simply because GPU inferenc
 
 Only the content OpenCode actually sends to the model must travel to the inference server.
 
-### **Important data-security distinction**
+### Important data-security distinction
 
 This should not be interpreted as meaning that research data never leave the computer.
 
@@ -1071,7 +1070,7 @@ This separates the **research workspace** from the **inference infrastructure**.
 ---
 
 
-# **4\. Practical Implementation**  {#section-4--practical-implementation}
+# 4\. Practical Implementation  {#section-4--practical-implementation}
 
 ## 4.1 From Jupyter to Reproducible Execution {#section-4-1-from-jupyter-to-reproducible-execution}
 
@@ -1111,7 +1110,7 @@ HPC therefore matters for more than simply hosting large models.
 
 It can also provide infrastructure for **repeatable scientific execution**.
 
-## `4.2 sbatch` Cheat Sheet {#section-4-2-sbatch-cheat-sheet}
+## 4.2 `sbatch` Cheat Sheet {#section-4-2-sbatch-cheat-sheet}
 
 ### Basic `sbatch` structure
 
@@ -1138,7 +1137,7 @@ sbatch --begin=02:00 scripts/orchestration/daily_cycle.sbatch
 
 ### What the critical parts mean
 
-### Job name
+#### Job name
 
 ```bash
 #SBATCH --job-name=my_workflow
@@ -1146,7 +1145,7 @@ sbatch --begin=02:00 scripts/orchestration/daily_cycle.sbatch
 
 A short name so you can recognize the job.
 
-### Log files
+#### Log files
 
 ```bash
 #SBATCH --output=logs/my_workflow_%j.out
@@ -1158,7 +1157,7 @@ A short name so you can recognize the job.
 
 Saves normal output and errors for later review.
 
-### Resources
+#### Resources
 
 ```bash
 #SBATCH --partition=cpu
@@ -1174,7 +1173,7 @@ Tells Slurm what the job needs:
 - memory  
 - maximum run time
 
-### Safer shell behavior
+#### Safer shell behavior
 
 ```bash
 set -euo pipefail
@@ -1182,7 +1181,7 @@ set -euo pipefail
 
 Helps the script stop when something important goes wrong.
 
-### Environment setup
+#### Environment setup
 
 ```bash
 module purge
@@ -1198,7 +1197,7 @@ source venv/bin/activate
 
 Loads the right software and environment.
 
-### Main workflow step
+#### Main workflow step
 
 ```bash
 python scripts/run_workflow.py
@@ -1381,7 +1380,7 @@ This hybrid approach may be particularly valuable for research.
 
 ---
 
-# **5\. System Design & Scaling** {#section-5--system-design---scaling}
+# 5\. System Design & Scaling {#section-5--system-design---scaling}
 
 ## 5.1 Build a Custom Research Harness {#section-5-1-build-a-custom-research-harness}
 
@@ -1501,7 +1500,7 @@ It may be a deliberately designed component of the research methodology.
 
 ---
 
-# **6\. Methodological & Disciplinary Context** {#section-6--methodological---disciplinary-context}
+# 6\. Methodological & Disciplinary Context {#section-6--methodological---disciplinary-context}
 
 ## 6.1 Harness Choice Is a Methodological Decision {#section-6-1-harness-choice-is-a-methodological-decision}
 
