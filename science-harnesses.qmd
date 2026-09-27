@@ -16,7 +16,9 @@ A useful way to think about a harness in research is as the set of **controls pl
 
 This matters because LLMs are inherently nondeterministic. We may not be able to make the model itself fully deterministic, but we can surround it with increasingly deterministic procedures. Schemas, validation rules, fixed preprocessing, versioned prompts, automated tests, logging, human-review checkpoints, and reproducible execution environments all reduce the number of uncontrolled degrees of freedom in the overall research workflow. In that sense, the purpose of the harness is not to eliminate model variability, but to **bound it, observe it, and make its role in the research process more consistent and reproducible**.
 
-![Research harness illustration](assets/harnesses-image1.png)
+[![The Harness Helps Control the Wild Horse](assets/harnesses-image1-large.png)](assets/harnesses-image1-large.png){target="_blank" rel="noopener"}
+
+*Image generated with OpenAI Codex.*
 
 The model provides underlying reasoning and language capabilities. The **harness determines what the model can actually do, and what boundaries are established for controlling those actions**.
 
@@ -48,7 +50,9 @@ Not every use of an LLM requires the same degree of control. If the model is hel
 
 Put differently, the amount of control we need should rise with the methodological consequence of the LLM's output. We do not need laboratory-grade instrumentation to brainstorm an idea. But when AI becomes part of the instrument producing the evidence, control over that instrument becomes part of scientific rigor.
 
-**![Research harness illustration](assets/harnesses-image2.png)**
+[![From Wild Horse to Research Instrument](assets/harnesses-image2-large.png)](assets/harnesses-image2-large.png){target="_blank" rel="noopener"}
+
+*Image generated with OpenAI Codex.*
 
 # Why Read/Use This {#why-read-use-this}
 
@@ -109,7 +113,7 @@ The fact that there may not yet be a settled standard does not mean researchers 
 
 ## 1.1 Considering LLMs in Your Research? {#section-1-1-considering-llms-in-your-research}
 
-[Updated version available here](https://docs.google.com/document/d/1-z5Dd1Y7o0dn2DKKUX001y-1bzGZJTwZVVZoVU-86Cc/edit?usp=sharing).
+[Updated version available here](considering-llms.html).
 
 ---
 
