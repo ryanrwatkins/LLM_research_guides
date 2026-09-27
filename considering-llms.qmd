@@ -1,5 +1,8 @@
 ---
 title: "Considering LLMs in Your GW Research?"
+subtitle: An Unofficial Guide
+author: Ryan Watkins
+date: 2026-09-27
 ---
 
 LLMs may play multiple roles in a research project, and each role may present distinct opportunities, constraints, and risks. Researchers may want to—and ethically be able to—use a proprietary LLM in one aspect of a project but not in another. The appropriate use of an LLM therefore depends not simply on whether an LLM is being used, but on what role it plays, what information it can access, how much influence it has on the research, and what controls are needed around its use.
