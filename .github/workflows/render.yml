@@ -1,0 +1,42 @@
+name: Render research guides
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: render-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: '1.10.18'
+          tinytex: true
+      - name: Render HTML and PDF
+        run: quarto render --to all
+      - name: Verify expected outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s _output/index.html
+          for guide in considering-llms proposal-support-toolkit science-harnesses; do
+            test -s "_output/$guide.html"
+            test -s "_output/$guide.pdf"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: research-guides-html
+          path: _output/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: research-guides-pdf
+          path: _output/*.pdf
+          if-no-files-found: error
+          retention-days: 30

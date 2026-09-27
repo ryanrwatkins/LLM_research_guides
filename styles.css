@@ -1,0 +1,10 @@
+/* Shared navy/teal palette with the PDF edition. */
+:root { --guide-navy: #003b5c; --guide-teal: #006b81; }
+body { line-height: 1.65; }
+h1, h2, h3, .title { color: var(--guide-navy); }
+h2 { border-bottom: 1px solid #d9e2e7; padding-bottom: .3rem; }
+a { color: var(--guide-teal); }
+pre { border-left: 3px solid #b7a57a; }
+blockquote { border-left: 3px solid #b7a57a; background: #f6f8fa; padding: 1rem; }
+table { font-size: .9rem; }
+.quarto-title-block { border-bottom: 3px solid #b7a57a; margin-bottom: 2rem; }

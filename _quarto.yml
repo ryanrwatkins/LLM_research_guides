@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: _output
+  render:
+    - index.qmd
+    - considering-llms.qmd
+    - proposal-support-toolkit.qmd
+    - science-harnesses.qmd
+website:
+  title: LLM Research Guides
+  navbar:
+    background: "#033C5A"
+    left:
+      - href: considering-llms.qmd
+        text: Research considerations
+      - href: proposal-support-toolkit.qmd
+        text: Proposal toolkit
+      - href: science-harnesses.qmd
+        text: Research harnesses
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+  pdf:
+    documentclass: scrartcl
+    pdf-engine: lualatex
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+    linkcolor: GuideNavy
+    urlcolor: GuideTeal
+    fontsize: 10pt
+    geometry:
+      - margin=0.8in
+    include-in-header: pdf-header.tex
+execute:
+  enabled: false
+lang: en

@@ -1,0 +1,25 @@
+---
+title: LLM Research Guides
+toc: false
+format: html
+---
+
+Practical resources for considering, documenting, and supporting LLM use in research at GW.
+
+## Considering LLMs in Your GW Research?
+
+A quick checklist and six considerations for responsible research use.
+
+[Read the guide](considering-llms.qmd) · [Download PDF](considering-llms.pdf)
+
+## Proposal support toolkit
+
+Modular resources for TAI-related grant proposals from the GW Trustworthy AI Initiative.
+
+[Read the toolkit](proposal-support-toolkit.qmd) · [Download PDF](proposal-support-toolkit.pdf)
+
+## LLM Harnesses for Research @ GWU
+
+From general-purpose agents to reproducible scientific workflows, including local and HPC configurations.
+
+[Read the guide](science-harnesses.qmd) · [Download PDF](science-harnesses.pdf)

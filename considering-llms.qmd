@@ -1,0 +1,105 @@
+---
+title: "Considering LLMs in Your GW Research?"
+---
+
+LLMs may play multiple roles in a research project, and each role may present distinct opportunities, constraints, and risks. Researchers may want to—and ethically be able to—use a proprietary LLM in one aspect of a project but not in another. The appropriate use of an LLM therefore depends not simply on whether an LLM is being used, but on what role it plays, what information it can access, how much influence it has on the research, and what controls are needed around its use.
+
+# TLDR: Quick Checklist Before Using LLMs in Your Research
+
+- [ ] **What could change about my research because I used LLMs?**  
+      Consider the potential benefits, risks, and unintended consequences of using an LLM. How might it affect the questions you ask, the options you consider, the methods you choose, the data you collect or analyze, or the conclusions you reach?  
+- [ ] **What specifically is the LLM doing?**  
+       Is it helping me brainstorm, write, code, design materials, interact with participants, analyze data, classify information, interpret results, etc.?  
+- [ ] **Could it shape the direction of the research?**  
+       Even if it is only brainstorming, could its suggestions influence which hypotheses, measures, analyses, or explanations I consider—and which ones I do not?  
+- [ ] **What information will it see or be able to access?**  
+       Am I entering participant data, confidential information, unpublished findings, proprietary material, or other sensitive information? If I am using an agent, what files, tools, or systems can it access?  
+- [ ] **How much will I rely on its output?**  
+       Is the output simply something I will consider, or will it become part of my research instrument, dataset, analysis, or conclusions?  
+- [ ] **How will I check it?**  
+       What could the LLM get wrong, and how will I detect those errors? Do I need human review, comparison with another method, repeated testing, or formal validation?  
+- [ ] **What should I record?**  
+       Would someone later need to know which model and associated tools I used, what I prompted it with, what it produced, what I logged, how I modified the output, or how it affected my decisions?  
+- [ ] **Am I using the right environment?**  
+       Is a public proprietary chatbot appropriate for this task, or do the data, reproducibility requirements, or importance of the LLM's role call for an enterprise, local, open-source, or institutionally controlled system?  
+- [ ] **Who remains responsible?**  
+       If the LLM makes a mistake or introduces bias, who is responsible for noticing it, reviewing it, and making the final methodological or editorial decisions?  
+- [ ] **Have I reviewed applicable GW policies and resources?**  
+    - [ ] [GW Data Protection Guide](https://it.gwu.edu/data-protection-guide)  
+    - [ ] [GW Artificial Intelligence (AI) Evaluation & Status](https://it.gwu.edu/ai-tools-status)  
+    - [ ] [GW Privacy Guidance for use of Artificial Intelligence](https://privacy.gwu.edu/privacy-guidance-use-artificial-intelligence)  
+    - [ ] [GW Data Management Plan (DMP) resources](https://researchintegrity.gwu.edu/data-management-plans)
+
+# Six Key Considerations
+
+When you have decided to use LLMs in your research, then you should review these six considerations and discuss them with your collaborators (especially student researchers or those new to using LLMs in research). These are not roadblocks to using LLMs, but rather considerations that can help make your use of LLMs in research transparent, reproducible, and ethical.  
+
+## 1. Role and Methodological Influence
+
+LLMs are multi-purpose tools and may play many different roles within a research project. These might include brainstorming research questions, summarizing literature, writing statistical analysis code, developing research instruments, generating or modifying stimuli, interacting with research participants, coding or classifying data, conducting analyses, interpreting findings, or assisting with writing.
+
+What is critical is not simply what the LLM is doing, but how its role may influence the research process and resulting findings. For example, using an LLM to brainstorm possible research designs may shape the project in meaningful ways, but its influence is substantively different from using an LLM to write the code for a web application used to collect data, classify participant responses, or calculate an outcome measure.
+
+Methodological influence is not limited to tasks that directly generate, transform, analyze, or interpret evidence. Even seemingly exploratory uses, such as brainstorming hypotheses, research questions, measures, or analytic approaches, can shape the path a study ultimately takes. LLMs may narrow or steer the range of options considered—sometimes in ways that align with a researcher’s existing assumptions, prior conversations, or stated hypotheses. Because conversational systems are generally designed to be helpful and responsive to the user, they may also be more likely to elaborate or reinforce a proposed direction than to surface strong alternatives or challenge underlying assumptions. In this sense, LLM-assisted brainstorming can contribute to a “garden of forking paths” well before data are collected or analyzed. When this is paired with modern “needle in the haystack” search tools, it is easy for LLMs to amplify existing challenges for doing high quality research.
+
+The nature of the concern therefore changes with the LLM’s role. Early-stage uses may require researchers to consider how the LLM influenced the choices that defined the study, while uses closer to the production of evidence may require more formal validation, documentation, and disclosure. In both cases, researchers should consider not only what the LLM produced, but how its involvement may have shaped the set of methodological choices that were considered and ultimately selected. 
+
+## 2. Data, Privacy, and Security
+
+If research involves humans or information about humans, the use of LLMs introduces important questions about data collection, access, storage, privacy, security, retention, and potential leakage. These considerations interact closely with the role the LLM plays in the research.
+
+For instance, if an LLM is used to write code for a data-collection application, a formal privacy and security review of that code is likely necessary before the application is deployed. If an LLM is used to analyze participant data, researchers must consider whether those data are transmitted to an external provider, retained by that provider, or used in ways that are inconsistent with participant consent, institutional policy, or applicable regulation. The type of data (e.g., restricted, regulated, PII) also plays into these considerations since even local hosted systems (such as [GW HPC](https://it.gwu.edu/hpc)) can be shared storage systems and may not be approved for certain types of data to even pass through via an LLM.
+
+Agentic AI systems create additional considerations because they may be able to access files, directories, databases, APIs, browsers, or other tools. Agents can be allowed to spin up multiple other agents, and each may be allowed to use a different LLM or the same LLM with different parameters. In such cases, the relevant question is not only what data researchers intentionally provide to the LLM, but also what information the system could potentially access through the permissions and tools available to it, and how you will document and report on the various instances of LLMs in your research.
+
+## 3. Validity, Reliability, and Error
+
+An LLM may be permissible to use and still be inappropriate as a research instrument. Researchers should therefore consider whether the model performs sufficiently well, consistently, and validly for the particular task it is being asked to perform.
+
+The level of validation needed will depend on the methodological importance of the task. An LLM used to generate ideas may require relatively little formal validation. An LLM used to code qualitative data, classify observations, score participant responses, generate synthetic data, or make decisions that affect the research sample may require substantially greater scrutiny.
+
+Researchers should consider what types of errors are possible, whether those errors are systematic, how errors are logged, whether performance varies across relevant populations or contexts, and how model outputs will be checked. Validation approaches might include comparison with human judgments, benchmark datasets, inter-rater agreement, sensitivity analyses, repeated runs, independent review, or other discipline-appropriate methods.
+
+The central question is not whether an LLM is generally capable, but whether its performance is sufficiently valid and reliable for the specific research function it has been assigned. If you are using multiple LLMs and/or LLMs in multiple steps of your research, systematically addressing these questions for each use (and documenting those results) is increasingly important.
+
+## 4. Human Oversight and Accountability
+
+The appropriate level of human oversight depends on the degree of autonomy and consequence associated with the LLM's role. Researchers should determine which outputs require human review, which decisions can be delegated to an AI system, and where explicit approval or intervention should remain with a researcher.
+
+For example, an LLM might suggest alternative statistical models for a researcher to consider, or it might autonomously select and run an analysis. It might propose codes for qualitative data that are subsequently reviewed by researchers, or it might independently classify an entire dataset. These approaches involve different levels of delegation and therefore different requirements for supervision and validation. LLM harnesses can offer settings where researchers decide how often and in what circumstances they want to have oversight over the work of the LLM agent's decisions and processes – these are critical decisions and in lab contexts they should be documented and enforced by all collaborators. Remember that LLM behavior can also influence human behavior. For example, having the LLM request verification at each step of a scientific workflow may change how those requests are handled (e.g., the depth of review, the criteria verified) by you or other researchers in your lab.
+
+Researchers should also establish responsibility for detecting and correcting errors. AI systems do not assume responsibility for methodological choices, participant protection, data security, or the validity of research conclusions. Those responsibilities remain with the researchers and institutions conducting the work.
+
+## 5. Platform, Access, and Governance
+
+The technical environment in which an LLM is used can determine what researchers are able to control, document, protect, and reproduce. Decisions about proprietary hosted models, enterprise systems, open-source models, local computing, or institutional high-performance computing should therefore follow from the methodological and ethical requirements of the research.
+
+Relevant considerations include control over model versions, data retention and training policies, access to logs, ability to preserve prompts and outputs, control over where data are processed, availability of models to other researchers, licensing and intellectual-property restrictions, institutional policies, terms of service, and dependence on external vendors.
+
+For relatively lightweight research activities, such as brainstorming or generating alternative wording, a proprietary hosted model may be entirely appropriate. As an LLM becomes more deeply embedded in the research method, however, greater control over the model, computing environment, data, and documentation may become increasingly important. The greater the role of LLMs in producing your research finding, the more important it becomes to make the surrounding workflow explicit, controlled, inspectable, and reproducible.
+
+## 6. Transparency, Documentation, and Reproducibility
+
+The use of LLMs can complicate traditional expectations for reproducibility. Model outputs may vary across runs, proprietary models may change without notice, and researchers may have limited information about system prompts, model architecture, training data, or inference infrastructure.
+
+Exact reproduction may therefore not always be possible. Nevertheless, researchers can often provide sufficient documentation for others to understand, evaluate, reconstruct, or systematically test an AI-enabled research process.
+
+Depending on the role of the LLM, relevant documentation may include the model and version used, prompts and system instructions, model parameters, runtime environments, dates of use, outputs, human interventions, connected tools, and other elements of the surrounding workflow. Researchers should also consider what information must be preserved internally, what should be disclosed in manuscripts or supplementary materials, and what would be necessary for another researcher to evaluate or replicate the methodological process.
+
+Documentation requirements should generally increase as the LLM becomes more central to the production of research evidence or findings.
+
+# Bringing it All Together
+
+These categories should not be treated as independent checklists. They interact with one another, and the appropriate safeguards for one project may be unnecessary or insufficient for another.
+
+An LLM used only to brainstorm possible research questions may have substantial intellectual influence while presenting relatively modest concerns about data security, reproducibility, or autonomy. An LLM used to code the primary outcome variable may require extensive validation, documentation, and human oversight. An agentic LLM that interacts directly with participants and stores their responses may raise all of these issues simultaneously, along with significant privacy, security, and governance concerns.
+
+**A useful general principle is that the constraints (e.g., harness requirements) placed on an LLM should increase with its methodological influence, access to sensitive information, and autonomy within the research workflow.**
+
+The key question for researchers is therefore not simply, "Can I use an LLM for this?" but rather, "What role will the LLM play in the research, what consequences follow from that role, and what technical, methodological, and governance conditions are necessary for its use to be appropriate?"
+
+## Getting Prepared
+
+The technical jargon in this overview can be challenging and LLMs are rapidly evolving and complex technologies. This should not be a roadblock to your successful use of LLMs in your research, but it may require additional self-study or collaborations throughout the research lifecycle.  If you are unfamiliar with technical terminology used in this guide (e.g., harness, embeddings), refer to the [AI Hero dictionary](https://www.aihero.dev/ai-coding-dictionary). It is our responsibility as researchers to ensure that we have adequate knowledge of the instruments we apply in our research.
+
+If you are already using LLMs in your research, then it is also important to keep up with the changes to the tools that you are using.  From the release of new harnesses to changes in data privacy agreements, keeping up with the tools you are using often benefits from a systematic process (e.g., a monthly tool review).

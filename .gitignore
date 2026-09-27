@@ -1,0 +1,17 @@
+/.quarto/
+/_output/
+/.DS_Store
+/*.tex
+!/pdf-header.tex
+/*.log
+/AGENTS.md
+/PLANNING.md
+/TASKS.md
+/SCRATCHPAD.md
+/PROBLEMS_TBD.md
+
+**/*.quarto_ipynb
+
+# Keep original exports and all skill/development notes local.
+*.md
+/harnesses_image*.png

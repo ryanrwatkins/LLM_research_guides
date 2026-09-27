@@ -1,0 +1,229 @@
+---
+title: "Modular Resources for TAI-Related Grant Proposals"
+subtitle: GW Trustworthy AI Initiative
+---
+
+# Overview
+
+GW TAI provides investigators with established pathways for extending the educational, interdisciplinary, and societal reach of AI research. Through its university-wide network, regular convenings, affiliated programs, and connections with external organizations, the initiative can help project teams identify opportunities to engage students, incorporate research products into educational activities, share findings with interdisciplinary audiences, and connect with government, industry, nonprofit, and policy communities. These existing channels allow investigators to build broader-impact and dissemination activities on established university structures rather than creating new programs for each project. Project teams may draw selectively on proposal resources below based on the goals of the proposal and in consultation with the relevant GW TAI leadership. Also contact GW TAI leadership for possible assistance in attaining letters of support from external partner organizations (public, private, non-profit).
+
+# Modular Resources {#modular-resources}
+
+The following language is designed to help investigators describe the institutional environment, educational opportunities, dissemination pathways, external connections, and other resources available through the GW Trustworthy AI Initiative (GW TAI). Investigators should select and adapt only the modules relevant to their proposal.
+
+Before submission, project teams should work with GW TAI leadership and have written confirmation of any proposed commitments of staff time, event support, access to students, computational resources, external partners, or other project-specific assistance.
+
+Before using any modules (below), investigators should specify:
+
+* The proposal section in which the language will appear.
+
+* The particular project activity the resource will support.
+
+* The students, researchers, practitioners, policymakers, or other audiences to be reached.
+
+* The specific GW TAI program, event, network, course, or affiliated unit involved.
+
+* The responsibilities of the project team.
+
+* Desired responsibilities, if any, of GW TAI or an affiliated unit (these require GW TAI approval before inclusion).
+
+* Whether access or support requires prior approval.
+
+* The expected frequency or timing of the activity.
+
+* The outputs or products that will be created.
+
+* The measures that will be used to assess reach and effectiveness.
+
+---
+
+# Commitment Categories {#commitment-categories}
+
+Investigators and proposal-support staff may use the following categories to distinguish institutional context from formal commitments:
+
+**Category 1: Existing institutional environment**  
+The resource or network exists and may be described as part of the university environment.
+
+**Category 2: Generally available opportunity**  
+Investigators may participate through normal university procedures (such as IRB for eligible projects, OVPR support on institutional commitments, research export control checks, financial/collaborative agreements, vendor compliance checks, etc.), subject to availability.
+
+**Category 3: Coordinated access**  
+GW TAI or another unit has agreed to help connect the project with a particular network, activity, or audience (such as, disciplinary connections, defense acquisition networks, etc.).
+
+**Category 4: Project-specific contribution**  
+A named individual or unit has agreed in writing to provide defined staff time, facilities, programming, data, funding, or other support (such as when cost sharing is permitted by the funder, or for sustainability planning, etc.).
+
+**Category 5: Formal collaboration**  
+The activity involves a documented in writing project partner, sub awardee, consultant, advisory member, or other formal participant.
+
+Project language should accurately reflect the applicable category and should not imply a higher level of commitment than has been approved.
+
+---
+
+# 1\. Core Institutional Environment {#section-1--core-institutional-environment}
+
+The George Washington University (GW) provides a strong institutional environment for interdisciplinary research in trustworthy artificial intelligence through the GW Trustworthy AI Initiative (GW TAI), a university-wide effort focused on advancing trustworthy AI in technical systems and across society. GW TAI connects a collaborative community of more than 100 researchers representing all 10 GW schools, with expertise spanning engineering, computer science, law, medicine, public health, business, public policy, the social sciences, and the arts and humanities.
+
+This university-wide network supports collaboration across the AI lifecycle, including the design, development, deployment, evaluation, and governance of AI systems. It enables investigators to connect technical research with relevant social, legal, ethical, organizational, educational, and policy perspectives.
+
+**Suggested uses:** Institutional Environment; Facilities, Equipment, and Other Resources; Project Description; Management Plan.
+
+---
+
+# 2\. Interdisciplinary Collaboration {#section-2--interdisciplinary-collaboration}
+
+GW TAI provides established mechanisms for investigators to identify and engage collaborators from disciplines relevant to the proposed research. Through its university-wide network, external connections and partners, working groups, seminars, workshops, and affiliated programs, the initiative can help project teams connect with researchers whose expertise complements the project’s technical, societal, legal, policy, health, educational, or organizational dimensions.
+
+These connections allow project teams to draw on expertise from across, and external to, the university without creating a new interdisciplinary network for each project. For the **\[project name\]**, the GW TAI network will provide a pathway for engagement with researchers in **\[relevant disciplines\]**, strengthening the project’s capacity to address **\[specific interdisciplinary challenge\]**.
+
+\[Use the final sentence only when the relevant connections have been discussed with GW TAI or the participating researchers.\]
+
+**Suggested uses:** Project Description; Management Plan; Team Qualifications; Institutional Environment.
+
+---
+
+# 3\. Educational Integration {#section-3--educational-integration}
+
+GW TAI provides pathways for translating AI research into educational experiences for K12, undergraduate, graduate, and professional students. Depending on the nature of the project, research findings, datasets, tools, case studies, demonstrations, and other products may inform classroom activities, student research, capstone projects, independent studies, workshops, or other educational experiences across the university.
+
+For the **\[project name\]**, the project team will explore opportunities to incorporate **\[research findings, datasets, tools, cases, or demonstrations\]** into **\[specific courses, programs, student projects, or educational activities\]**. These activities will expose students to both the technical dimensions of AI and its implications for **\[relevant societal, legal, ethical, policy, health, or organizational context\]**.
+
+\[Proposals should identify specific courses, instructors, programs, or student populations whenever possible. Do not imply guaranteed curricular adoption without written instructor or program approval.\]
+
+**Suggested uses:** Broader Impacts; Education Plan; Workforce Development Plan; Project Description.
+
+---
+
+# 4\. Student Research and Workforce Development {#section-4--student-research-and-workforce-development}
+
+GW TAI’s interdisciplinary community creates opportunities to engage students in AI-related research and professional development across technical and nontechnical fields. Projects may involve students through research assistantships, capstone experiences, practicum activities, internships, apprenticeships, independent studies, thesis or dissertation research, interdisciplinary project teams, workshops, or research showcases.
+
+The **\[project name\]** will engage **\[undergraduate, graduate, doctoral, or professional\]** students in **\[specific activities\]**. Students will gain experience in **\[methods, tools, research practices, stakeholder engagement, responsible AI practices, or professional skills\]**, preparing them to contribute to the responsible development and use of AI across research, government, industry, nonprofit, educational, and policy settings.
+
+GW TAI’s broader network will also provide opportunities for students to encounter perspectives from multiple disciplines and to understand how trustworthy AI challenges are addressed across different sectors.
+
+**Suggested uses:** Broader Impacts; Education and Training Plan; Mentoring Plan; Workforce Development.
+
+---
+
+# 5\. Research Dissemination {#section-5--research-dissemination}
+
+GW TAI offers established channels through which investigators may share research findings with interdisciplinary academic audiences. These channels include seminars, workshops, conferences, working groups, research presentations, and other university-wide convenings focused on AI and its societal implications.
+
+The **\[project name\]** will use appropriate GW TAI channels to disseminate **\[findings, tools, methods, datasets, or other products\]** to researchers beyond the project’s home discipline(s). This dissemination will support feedback, encourage reuse and adaptation, and promote dialogue among technical and nontechnical researchers.
+
+By using existing convenings and communication channels, the project can reach relevant audiences, including professional communities (e.g., **\[work with TAI to identify specific community connections that might be most relevant for your research, such as ESSyS, INFORMS, SERC\]** ) without creating a separate dissemination infrastructure solely for the proposed work.
+
+\[Specify the anticipated format and audience whenever possible—for example, an annual research presentation, workshop, demonstration, or interdisciplinary panel.\]
+
+**Suggested uses:** Broader Impacts; Dissemination Plan; Data or Software Sharing Plan; Project Description.
+
+---
+
+# 6\. Translation to Practice and Policy {#section-6--translation-to-practice-and-policy}
+
+GW TAI connects researchers working on AI with communities concerned with its implementation, governance, oversight, and societal and environmental effects. Through the initiative and its affiliated institutes and centers (as well as GWU’s Office of Innovation and Entrepreneurship, and Technology Commercialization Office), investigators may have opportunities to share findings with government, industry, nonprofit, policy, legal, educational, health, and community audiences.
+
+For the **\[project name\]**, these connections will provide potential pathways for translating research into **\[practice, policy, standards, guidance, tools, organizational processes, educational materials, or public resources\]**. The project team will engage **\[specific audiences or sectors\]** through **\[briefings, workshops, demonstrations, practitioner materials, policy discussions, or other activities\]**.
+
+These existing relationships and convening channels can help the project reach relevant users and decision-makers while reducing the need for the research team to build new external networks from the ground up.
+
+\[Name specific partners or audiences only when a relationship exists or participation has been confirmed.\]
+
+**Suggested uses:** Broader Impacts; Knowledge Translation Plan; Dissemination Plan; Stakeholder Engagement Plan.
+
+---
+
+# 7\. Convening and Stakeholder Engagement {#section-7--convening-and-stakeholder-engagement}
+
+GW TAI supports regular interdisciplinary convenings that bring together researchers, students, practitioners, and external stakeholders around emerging AI issues. These activities provide an established setting for discussing research needs, presenting preliminary findings, gathering feedback, and identifying opportunities for collaboration or application.
+
+The **\[project name\]** will use **\[seminars, workshops, working groups, conferences, roundtables, or other convenings\]** to engage **\[specific stakeholder groups\]** at **\[project stage or frequency\]**. Feedback from these activities will inform **\[research design, interpretation, tool development, dissemination, implementation, or future research\]**.
+
+Using established convening structures will allow the project to engage relevant participants (and communities) more efficiently than creating an entirely new event series or stakeholder network.
+
+\[Do not imply a guarantee that GW TAI will host, co-sponsor, publicize, advise on, or simply provide access to an existing venue with prior written confirmation from GW TAI leadership.\]
+
+**Suggested uses:** Broader Impacts; Stakeholder Engagement Plan; Community Engagement Plan; Advisory Structure.
+
+---
+
+# 8\. Affiliated Institutes, Centers, and Programs {#section-8--affiliated-institutes--centers--and-programs}
+
+GW TAI coordinates and collaborates with a broad range of AI-related institutes, centers, programs, and research communities across the university. These include the NSF–NIST Institute for Trustworthy AI in Law and Society (TRAILS), the NSF Research Traineeship on the Co-Design of Trustworthy AI in Systems (DTAIS), the Institute for Data, Democracy and Politics, Cyber@GW, the GW Center for Law and Technology, and other affiliated units.
+
+These relationships create opportunities for investigators to connect their projects with complementary research, educational initiatives, disciplinary communities, and external networks. For the **\[project name\]**, connections with **\[specific center, program, or institute\]** will support **\[specific activity or objective\]**.
+
+\[Include named units only when they are relevant. Obtain written approval before describing a unit as providing project-specific resources, personnel, data, facilities, or formal collaboration.\]
+
+**Suggested uses:** Institutional Environment; Facilities and Resources; Broader Impacts; Collaboration Plan.
+
+---
+
+# 9\. Computational and Research Infrastructure {#section-9--computational-and-research-infrastructure}
+
+GW researchers have access to university-supported research infrastructure that may support computationally intensive and data-intensive AI research. Available resources include high-performance computing services and the Capital Area Advanced Research and Education Network, which provides high-speed connectivity to Internet2 and other advanced research networks. In addition, GW has research infrastructure (e.g., the MESH testbed, and Nanofabrication and Imaging Center) which can support the implementation of socio-technical and/or technical research.
+
+For the **\[project name\]**, **\[specific resource\]** will support **\[model training, simulation, data processing, secure collaboration, storage, transfer, or other function\]**.
+
+\[Use this module only after confirming in writing that the identified resource is appropriate and available to the project. Clearly distinguish generally available infrastructure from resources requiring an application, allocation, fee, security review, or project-specific approval.\]
+
+**Suggested uses:** Facilities, Equipment, and Other Resources; Data Management Plan; Cyberinfrastructure Plan; Project Description.
+
+---
+
+# 10\. Broader Impacts Feasibility {#section-10--broader-impacts-feasibility}
+
+The proposed broader impacts activities will build on established GW TAI networks, educational pathways, convenings, and dissemination channels. These structures will allow the project team to reach **\[students, researchers, practitioners, policymakers, community members, or other audiences\]** through mechanisms that already exist within the university.
+
+Rather than establishing a separate infrastructure for each activity, the project will integrate **\[educational, dissemination, engagement, or workforce-development activity\]** into **\[specific GW TAI channel or affiliated program\]**. This approach will reduce the administrative burden on the research team, improve the feasibility of the proposed activities, and support their continuation beyond a single event or project milestone.
+
+The project team will remain responsible for developing the substantive content, carrying out the activities described in the proposal, and assessing their outcomes.
+
+**Suggested uses:** Broader Impacts; Project Description; Management Plan.
+
+---
+
+# 11\. Assessment of Educational and Dissemination Activities {#section-11--assessment-of-educational-and-dissemination-activities}
+
+The **\[project name\]** will assess the reach and effectiveness of its educational, dissemination, and engagement activities using measures appropriate to each activity. These may include participation levels, audience characteristics, student work products, feedback surveys, follow-up engagement, adoption or reuse of project resources, downloads, citations, stakeholder input, or evidence that project findings informed research, teaching, practice, or policy.
+
+Where activities are conducted through GW TAI programs or convenings, the project will coordinate with the relevant organizers to identify available participation and feedback data. Findings from the assessment will be used to refine subsequent activities and strengthen the project’s broader impacts. GWTAI's expertise in program and/or curriculum development and curation will be leveraged as avenues for sustainability beyond preliminary award duration, reducing the curriculum design burden on the research team, and improving the impact of the proposed educational activities.
+
+\[The proposal should identify a small number of realistic measures tied to the intended outcome rather than relying only on attendance counts.\]
+
+**Suggested uses:** Broader Impacts; Evaluation Plan; Education Plan; Dissemination Plan.
+
+---
+
+# 12\. Sustainability and Continued Use {#section-12--sustainability-and-continued-use}
+
+By embedding project activities and products within established GW TAI networks and university structures, the **\[project name\]** will create opportunities for continued use and dissemination beyond the period of funding. Project products such as **\[curricular materials, datasets, software, cases, recordings, briefs, methods, or tools\]** may continue to be used through **\[courses, student projects, seminars, websites, affiliated centers, or research communities\]**.
+
+The project will design these products for accessibility and reuse by **\[target audience\]** and will identify appropriate institutional or public channels for maintaining and sharing them after the award period.
+
+\[Do not promise long-term hosting, maintenance, or institutional ownership unless those responsibilities have been confirmed in writing.\]
+
+**Suggested uses:** Broader Impacts; Sustainability Plan; Dissemination Plan; Data and Software Sharing Plan.
+
+---
+
+# 13\. Concise Broader Impacts Paragraph {#section-13--concise-broader-impacts-paragraph}
+
+The **\[project name\]** will draw on the GW Trustworthy AI Initiative’s established educational, interdisciplinary, and dissemination pathways to extend the reach of the proposed research. Project findings and products will be shared through **\[specific seminars, workshops, courses, student projects, research showcases, or external engagement activities\]** with **\[target audiences\]**. By building these activities into existing university networks and programs, the project will be able to undertake ambitious broader impacts activities without creating a separate outreach infrastructure. The project team will develop and deliver the substantive activities and will assess their effectiveness using **\[specific measures\]**.
+
+---
+
+# 14\. Concise Facilities and Institutional Resources Paragraph {#section-14--concise-facilities-and-institutional-resources-paragraph}
+
+The George Washington University provides a strong institutional environment for interdisciplinary AI research through the GW Trustworthy AI Initiative, a university-wide network of more than 100 researchers representing all 10 GW schools. GW TAI connects expertise in engineering, computer science, law, medicine, public health, business, public policy, the social sciences, and the arts and humanities. The initiative provides established pathways for interdisciplinary collaboration, educational engagement, research dissemination, and connection with affiliated AI-related institutes and external communities. The **\[project name\]** will draw on these resources to support **\[specific project activities\]**.
+
+---
+
+# 15\. Project-Specific Support Statement {#section-15--project-specific-support-statement}
+
+The GW Trustworthy AI Initiative will support the **\[project name\]** by providing access to **\[specific network, program, event, communication channel, educational pathway, or other resource\]**. This resource will be used to **\[specific purpose\]** for **\[specific audience or project activity\]**. GW TAI’s role will be to **\[connect, convene, advise, publicize, provide a venue, or other confirmed contribution\]**, while the project team will be responsible for **\[developing content, conducting the activity, managing participants, assessing outcomes, or other responsibility\]**.
+
+\[This module must be reviewed and approved in writing by GW TAI leadership.\]
+
+---
