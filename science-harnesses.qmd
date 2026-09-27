@@ -1,7 +1,8 @@
 ---
 title: "LLM Harnesses for Research @ GWU"
+subtitle: An Unofficial Guide
 author: Ryan Watkins
-date: 2026-09-20
+date: 2026-09-27
 ---
 
 # **From General-Purpose Agents to Reproducible Scientific Workflows** {#from-general-purpose-agents-to-reproducible-scientific-workflows}
