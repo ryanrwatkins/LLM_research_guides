@@ -40,4 +40,5 @@ format:
     include-in-header: pdf-header.tex
 execute:
   enabled: false
+date-format: "MMMM D, YYYY"
 lang: en

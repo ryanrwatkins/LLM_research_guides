@@ -1,5 +1,6 @@
 ---
 title: LLM Research Guides
+subtitle: Unofficial Guides by Ryan Watkins
 toc: false
 format: html
 ---
@@ -12,9 +13,9 @@ A quick checklist and six considerations for responsible research use.
 
 [Read the guide](considering-llms.qmd) · [Download PDF](considering-llms.pdf)
 
-## Proposal support toolkit
+## Modular Resources for TAI-Related Grant Proposals
 
-Modular resources for TAI-related grant proposals from the GW Trustworthy AI Initiative.
+Unofficial proposal resources related to the GW Trustworthy AI Initiative.
 
 [Read the toolkit](proposal-support-toolkit.qmd) · [Download PDF](proposal-support-toolkit.pdf)
 
