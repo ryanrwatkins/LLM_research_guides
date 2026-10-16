@@ -730,105 +730,7 @@ CNTL \+ P to see available commands
 
 ---
 
-### B7. Run OpenCode as a Persistent Server and Reconnect {#b7--run-opencode-as-a-persistent-server-and-reconnect}
-
-Instead of launching the terminal interface directly as in B6, you can run an OpenCode server on the cluster and connect to it from your Mac.
-
-In this arrangement, **OpenCode, the research workspace, and the tools remain on HPC**. Your Mac provides the terminal or browser interface. Model inference happens on the remote GPU when OpenCode is configured to use the HPC-hosted Ollama model from B5.
-
-#### Keep the remote session running
-
-A standalone server separates OpenCode from the client interface, but `opencode serve` alone does not ensure that the process survives an SSH logout.
-
-For an interactive workflow, start a persistent terminal session on the login node **before requesting the GPU allocation in B2**:
-
-```bash
-tmux new -s research-opencode
-```
-
-Then request the allocation and perform the Ollama and OpenCode setup inside that session. Use this approach where supported by the cluster; a scheduler-managed batch job is another option.
-
-The server and model remain available only while their processes and the GPU allocation remain active. Disconnecting your Mac does not extend the allocation's time limit.
-
-#### Protect and start the server
-
-On the allocated compute node, move into your research project and start a password-protected server:
-
-```bash
-cd /scratch/<group-or-user-folder>/<project>
-
-OPENCODE_SERVER_PASSWORD='your_password' \
-  opencode serve --hostname 127.0.0.1 --port 4096
-```
-
-Replace `your_password` with a strong, unique password. Set it **before starting the server**. The default authentication username is `opencode`. Keep the actual password out of shared scripts and repositories.
-
-For a browser interface, use `opencode web` instead:
-
-```bash
-OPENCODE_SERVER_PASSWORD='your_password' \
-  opencode web --hostname 127.0.0.1 --port 4096
-```
-
-Choose one of these commands for port `4096`. If the web command attempts to open a browser on the cluster, use your Mac's browser through the tunnel below instead.
-
-To detach from `tmux` without stopping the session, press **Ctrl+B**, then **D**. After logging back into the same login node, return to it with:
-
-```bash
-tmux attach -t research-opencode
-```
-
-#### Forward the server port to your Mac
-
-The SSH tunnel must reach the **compute node running OpenCode**, rather than the login node's loopback interface.
-
-Where SSH to an allocated compute node through the login node is permitted, run this on your Mac:
-
-```bash
-ssh -N \
-  -J your_username@pegasus.arc.gwu.edu \
-  -L 4096:localhost:4096 \
-  your_username@gpu025
-```
-
-Replace `gpu025` with the allocated compute node reported by `hostname`, and replace `your_username` with your login ID. This keeps OpenCode bound to the compute node's loopback interface. **This SSH route has not been tested on Pegasus**; confirm that it is supported by the cluster.
-
-For a host you can SSH into directly, the equivalent is:
-
-```bash
-ssh -N -L 4096:localhost:4096 user@hpc
-```
-
-Here, `hpc` must be the machine running OpenCode. If it is only the login node, this command will not reach a server bound to `localhost` on a separate compute node.
-
-#### Reconnect from the terminal or browser
-
-On your Mac, set the same password and attach to the interactive terminal interface:
-
-```bash
-export OPENCODE_SERVER_PASSWORD='your_password'
-
-opencode attach http://localhost:4096 --continue
-```
-
-For a noninteractive follow-up prompt:
-
-```bash
-opencode run --attach http://localhost:4096 --continue \
-  "Summarize our progress and continue with the next step."
-```
-
-`--continue` selects the last session. If you have several sessions, use `--session SESSION_ID` to select the intended one explicitly. Reconnecting restores access to the session; it does not guarantee that an interrupted command completed.
-
-If you started `opencode web`, open [http://localhost:4096](http://localhost:4096) in Chrome or Firefox on your Mac. Sign in with username `opencode` and your server password, then select your session.
-
-After disconnecting, recreate the SSH tunnel and reconnect through either interface, provided the remote server, model, and allocation are still running.
-
-See the OpenCode [server](https://docs.opencode.ai/docs/server/), [web interface](https://docs.opencode.ai/docs/web/), and [CLI](https://docs.opencode.ai/docs/cli/) documentation for the command options.
-
----
-
-### B8. Simple Website Test {#b7--simple-website-test}
+### B7. Simple Website Test {#b7--simple-website-test}
 
 Example prompt:
 
@@ -842,7 +744,7 @@ More complex autonomous workflows provide a better test.
 
 ---
 
-### B9. Complex Agent Test: EV Research Application {#b8--complex-agent-test--ev-research-application}
+### B8. Complex Agent Test: EV Research Application {#b8--complex-agent-test--ev-research-application}
 
 With the L40S:
 
@@ -889,7 +791,7 @@ This provides a much stronger demonstration of an agent workflow than simply gen
 
 ---
 
-### B10. Viewing a Finished HPC Application {#b9--viewing-a-finished-hpc-application}
+### B9. Viewing a Finished HPC Application {#b9--viewing-a-finished-hpc-application}
 
 An expensive GPU does not need to remain allocated simply to display a completed application.
 
@@ -1167,6 +1069,66 @@ This separates the **research workspace** from the **inference infrastructure**.
 
 ---
 
+
+### C7. Optional: Use a Local Browser Interface With HPC Inference {#c7--local-browser-interface-with-hpc-inference}
+
+You can use OpenCode in a browser on your Mac while keeping model inference on HPC.
+
+**OpenCode, your project files, and the tools remain on your Mac.** The browser connects to the local OpenCode server, and OpenCode sends model requests through the existing SSH tunnel to Ollama on the allocated GPU node.
+
+#### Start the local browser interface
+
+Keep the inference tunnel from C4 running. The Ollama provider in C3 should still point to `http://127.0.0.1:11435/v1`.
+
+In another terminal **on your Mac**, move into your local project and start the web interface:
+
+```bash
+cd /path/to/local/research-project
+
+opencode web --hostname 127.0.0.1 --port 4096
+```
+
+Use `opencode web` for the browser interface. `opencode serve` is the headless-server alternative.
+
+Open [http://localhost:4096](http://localhost:4096) in Chrome or Firefox if it does not open automatically. Select the HPC-hosted Ollama model configured in C3, such as `ollama/qwen3-coder:30b`, and start or reopen a session.
+
+No password setup is needed for this local-only example. The explicit `127.0.0.1` binding keeps the OpenCode server accessible only from your Mac; keep that binding when using this configuration.
+
+#### Understand the two ports
+
+* **4096:** your browser connects to OpenCode on your Mac.
+* **11435:** OpenCode connects through the SSH tunnel to Ollama on HPC.
+
+You do not need an additional SSH tunnel for port `4096`.
+
+The resulting architecture is:
+
+```text
+Browser on your Mac
+        |
+        | localhost:4096
+        v
+OpenCode + local files + local tools
+        |
+        | localhost:11435
+        v
+SSH tunnel to HPC
+        |
+        v
+Ollama + model inference on the allocated GPU
+```
+
+#### Return to your session
+
+Closing the browser tab does not stop the OpenCode server. While the server is still running, reopen [http://localhost:4096](http://localhost:4096) and select your existing session.
+
+Keep your Mac awake and the OpenCode terminal running. Model requests also require the SSH tunnel, Ollama, and the GPU allocation to remain active. If the tunnel disconnects, recreate it as described in C4 before sending another model request. Reconnecting does not guarantee that an interrupted request completed.
+
+To stop the local web server, press **Ctrl+C** in the terminal running `opencode web`.
+
+See the [OpenCode web interface documentation](https://docs.opencode.ai/docs/web/) for additional options.
+
+---
 
 # 4\. Practical Implementation  {#section-4--practical-implementation}
 
