@@ -1070,6 +1070,66 @@ This separates the **research workspace** from the **inference infrastructure**.
 ---
 
 
+### C7. Optional: Use a Local Browser Interface With HPC Inference {#c7--local-browser-interface-with-hpc-inference}
+
+You can use OpenCode in a browser on your Mac while keeping model inference on HPC.
+
+**OpenCode, your project files, and the tools remain on your Mac.** The browser connects to the local OpenCode server, and OpenCode sends model requests through the existing SSH tunnel to Ollama on the allocated GPU node.
+
+#### Start the local browser interface
+
+Keep the inference tunnel from C4 running. The Ollama provider in C3 should still point to `http://127.0.0.1:11435/v1`.
+
+In another terminal **on your Mac**, move into your local project and start the web interface:
+
+```bash
+cd /path/to/local/research-project
+
+opencode web --hostname 127.0.0.1 --port 4096
+```
+
+Use `opencode web` for the browser interface. `opencode serve` is the headless-server alternative.
+
+Open [http://localhost:4096](http://localhost:4096) in Chrome or Firefox if it does not open automatically. Select the HPC-hosted Ollama model configured in C3, such as `ollama/qwen3-coder:30b`, and start or reopen a session.
+
+No password setup is needed for this local-only example. The explicit `127.0.0.1` binding keeps the OpenCode server accessible only from your Mac; keep that binding when using this configuration.
+
+#### Understand the two ports
+
+* **4096:** your browser connects to OpenCode on your Mac.
+* **11435:** OpenCode connects through the SSH tunnel to Ollama on HPC.
+
+You do not need an additional SSH tunnel for port `4096`.
+
+The resulting architecture is:
+
+```text
+Browser on your Mac
+        |
+        | localhost:4096
+        v
+OpenCode + local files + local tools
+        |
+        | localhost:11435
+        v
+SSH tunnel to HPC
+        |
+        v
+Ollama + model inference on the allocated GPU
+```
+
+#### Return to your session
+
+Closing the browser tab does not stop the OpenCode server. While the server is still running, reopen [http://localhost:4096](http://localhost:4096) and select your existing session.
+
+Keep your Mac awake and the OpenCode terminal running. Model requests also require the SSH tunnel, Ollama, and the GPU allocation to remain active. If the tunnel disconnects, recreate it as described in C4 before sending another model request. Reconnecting does not guarantee that an interrupted request completed.
+
+To stop the local web server, press **Ctrl+C** in the terminal running `opencode web`.
+
+See the [OpenCode web interface documentation](https://docs.opencode.ai/docs/web/) for additional options.
+
+---
+
 # 4\. Practical Implementation  {#section-4--practical-implementation}
 
 ## 4.1 From Jupyter to Reproducible Execution {#section-4-1-from-jupyter-to-reproducible-execution}
