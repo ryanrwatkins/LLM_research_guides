@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: quarto-dev/quarto-actions/setup@v2
+        env:
+          # Quarto uses GH_TOKEN when querying GitHub for the TinyTeX release.
+          GH_TOKEN: ${{ github.token }}
         with:
           version: '1.10.18'
           tinytex: true

@@ -537,6 +537,8 @@ sinfo -a
 
 ### B2. Request a GPU {#b2--request-a-gpu}
 
+If you do not yet have GW HPC access, submit the [GW High Performance Computing Access Request](https://it.gwu.edu/high-performance-computing-access-request) and obtain access before proceeding with the HPC steps.
+
 We have three types of GPU currently available with HPC. Below is how you request one of these.
 
 ---
@@ -930,6 +932,8 @@ Nvidia-smi
 ---
 
 ### C2. Start Ollama on HPC {#c2--start-ollama-on-hpc}
+
+If you do not yet have GW HPC access, submit the [GW High Performance Computing Access Request](https://it.gwu.edu/high-performance-computing-access-request) and obtain access before proceeding with the HPC steps.
 
 For GH200:
 

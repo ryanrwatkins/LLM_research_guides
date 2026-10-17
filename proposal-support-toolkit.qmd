@@ -162,19 +162,7 @@ These relationships create opportunities for investigators to connect their proj
 
 ---
 
-# 9\. Computational and Research Infrastructure {#section-9--computational-and-research-infrastructure}
-
-GW researchers have access to university-supported research infrastructure that may support computationally intensive and data-intensive AI research. Available resources include high-performance computing services and the Capital Area Advanced Research and Education Network, which provides high-speed connectivity to Internet2 and other advanced research networks. In addition, GW has research infrastructure (e.g., the MESH testbed, and Nanofabrication and Imaging Center) which can support the implementation of socio-technical and/or technical research.
-
-For the **\[project name\]**, **\[specific resource\]** will support **\[model training, simulation, data processing, secure collaboration, storage, transfer, or other function\]**.
-
-\[Use this module only after confirming in writing that the identified resource is appropriate and available to the project. Clearly distinguish generally available infrastructure from resources requiring an application, allocation, fee, security review, or project-specific approval.\]
-
-**Suggested uses:** Facilities, Equipment, and Other Resources; Data Management Plan; Cyberinfrastructure Plan; Project Description.
-
----
-
-# 10\. Broader Impacts Feasibility {#section-10--broader-impacts-feasibility}
+# 9\. Broader Impacts Feasibility {#section-10--broader-impacts-feasibility}
 
 The proposed broader impacts activities will build on established GW TAI networks, educational pathways, convenings, and dissemination channels. These structures will allow the project team to reach **\[students, researchers, practitioners, policymakers, community members, or other audiences\]** through mechanisms that already exist within the university.
 
@@ -186,7 +174,7 @@ The project team will remain responsible for developing the substantive content,
 
 ---
 
-# 11\. Assessment of Educational and Dissemination Activities {#section-11--assessment-of-educational-and-dissemination-activities}
+# 10\. Assessment of Educational and Dissemination Activities {#section-11--assessment-of-educational-and-dissemination-activities}
 
 The **\[project name\]** will assess the reach and effectiveness of its educational, dissemination, and engagement activities using measures appropriate to each activity. These may include participation levels, audience characteristics, student work products, feedback surveys, follow-up engagement, adoption or reuse of project resources, downloads, citations, stakeholder input, or evidence that project findings informed research, teaching, practice, or policy.
 
@@ -198,7 +186,7 @@ Where activities are conducted through GW TAI programs or convenings, the projec
 
 ---
 
-# 12\. Sustainability and Continued Use {#section-12--sustainability-and-continued-use}
+# 11\. Sustainability and Continued Use {#section-12--sustainability-and-continued-use}
 
 By embedding project activities and products within established GW TAI networks and university structures, the **\[project name\]** will create opportunities for continued use and dissemination beyond the period of funding. Project products such as **\[curricular materials, datasets, software, cases, recordings, briefs, methods, or tools\]** may continue to be used through **\[courses, student projects, seminars, websites, affiliated centers, or research communities\]**.
 
@@ -210,22 +198,87 @@ The project will design these products for accessibility and reuse by **\[target
 
 ---
 
-# 13\. Concise Broader Impacts Paragraph {#section-13--concise-broader-impacts-paragraph}
+# 12\. Concise Broader Impacts Paragraph {#section-13--concise-broader-impacts-paragraph}
 
 The **\[project name\]** will draw on the GW Trustworthy AI Initiative’s established educational, interdisciplinary, and dissemination pathways to extend the reach of the proposed research. Project findings and products will be shared through **\[specific seminars, workshops, courses, student projects, research showcases, or external engagement activities\]** with **\[target audiences\]**. By building these activities into existing university networks and programs, the project will be able to undertake ambitious broader impacts activities without creating a separate outreach infrastructure. The project team will develop and deliver the substantive activities and will assess their effectiveness using **\[specific measures\]**.
 
 ---
 
-# 14\. Concise Facilities and Institutional Resources Paragraph {#section-14--concise-facilities-and-institutional-resources-paragraph}
+# 13\. Concise Facilities and Institutional Resources Paragraph {#section-14--concise-facilities-and-institutional-resources-paragraph}
 
 The George Washington University provides a strong institutional environment for interdisciplinary AI research through the GW Trustworthy AI Initiative, a university-wide network of more than 100 researchers representing all 10 GW schools. GW TAI connects expertise in engineering, computer science, law, medicine, public health, business, public policy, the social sciences, and the arts and humanities. The initiative provides established pathways for interdisciplinary collaboration, educational engagement, research dissemination, and connection with affiliated AI-related institutes and external communities. The **\[project name\]** will draw on these resources to support **\[specific project activities\]**.
 
 ---
 
-# 15\. Project-Specific Support Statement {#section-15--project-specific-support-statement}
+# 14\. Project-Specific Support Statement {#section-15--project-specific-support-statement}
 
 The GW Trustworthy AI Initiative will support the **\[project name\]** by providing access to **\[specific network, program, event, communication channel, educational pathway, or other resource\]**. This resource will be used to **\[specific purpose\]** for **\[specific audience or project activity\]**. GW TAI’s role will be to **\[connect, convene, advise, publicize, provide a venue, or other confirmed contribution\]**, while the project team will be responsible for **\[developing content, conducting the activity, managing participants, assessing outcomes, or other responsibility\]**.
 
 \[This module must be reviewed and approved in writing by GW TAI leadership.\]
 
 ---
+
+# 15\. Computational and Research Infrastructure {#section-9--computational-and-research-infrastructure}
+
+## General Overview
+
+GW researchers have access to university-supported research infrastructure that may support computationally intensive and data-intensive AI research. Available resources include high-performance computing services and the Capital Area Advanced Research and Education Network, which provides high-speed connectivity to Internet2 and other advanced research networks. In addition, GW has research infrastructure (e.g., the MESH testbed, and Nanofabrication and Imaging Center) which can support the implementation of socio-technical and/or technical research.
+
+For the **\[project name\]**, **\[specific resource\]** will support **\[model training, simulation, data processing, secure collaboration, storage, transfer, or other function\]**.
+
+\[Use this module only after confirming in writing that the identified resource is appropriate and available to the project. Clearly distinguish generally available infrastructure from resources requiring an application, allocation, fee, security review, or project-specific approval.\]
+
+**Suggested uses:** Facilities, Equipment, and Other Resources; Data Management Plan; Cyberinfrastructure Plan; Project Description.
+
+The following subsections reproduce the supplied *Research Computing Facilities at George Washington University* document (March 2025), including its hardware specifications and table.
+
+## Research Technology Services
+
+George Washington Information Technology (GW IT) provides a number of research computing services to empower the research mission of The George Washington University (GW), serving students, faculty, staff and community members. These services support computationally and data intensive research and are designed to accelerate achievement of the university's research and education goals, provided in partnership with GW’s schools, centers, and institutes and center around enhancing GW’s research competitiveness and success.
+
+Research Technology Services (RTS) operates as an institutionally supported shared service organization, enabling cross-disciplinary research by delivering a broad portfolio of dedicated and shared platforms and services. This office works in partnership with researchers and research administration to support research programs, promoting shared infrastructure and next generation technology and thus advancing the competitiveness of GW's ever-evolving research infrastructure. In order to develop, support, and improve visibility of such services, collaboration with key service providers and campus partners is instrumental.
+
+The RTS group has fourteen full-time professional staff with the mission of broad support for GW’s research computing needs. In addition to core High Performance Computing and Research Storage services, the RTS team engages in research enablement and cloud engineering services, as well as operating the Capital Area Advanced Education and Research Network (CAAREN) and a REDCap data management environment.
+
+## High Performance Computing
+
+The flagship high-performance computing resource at GW is the Pegasus cluster. Pegasus consists of 210 compute nodes of diverse configuration, from over 100 40-core “CPU” nodes with 96 GB of RAM, 60 nodes with 384 GB RAM, and 3 TB “high-memory” nodes, plus 39 GPU-enabled node configurations. Over 20% of the Pegasus nodes have GPUs, with 1, 2, or 4 Nvidia V-100s per node. The robust cluster utilizes the Dell R740 and C4140 platforms. Interconnect fabrics for Pegasus include 100 Gbps EDR Infiniband for compute and scratch file system fabrics and 10 Gbps Ethernet for login, job control, and NFS. Pegasus includes two file systems, each with 2 petabytes (PB) of storage: one high speed “scratch” Lustre file system based on DDN Exascaler platform, the other NFS for home and group persistent storage based on DDN’s GridScaler platform. [https://www.hpc.arc.gwu.edu](https://www.hpc.arc.gwu.edu)
+
+While Pegasus is in its fifth year of initial lifecycle, it follows in a tradition of institutional support for HPC, beginning with the inaugural “Colonial One” HPC cluster in 2012. Institutional commitment for HPC will continue with ongoing collaboration between the Provost and Office of the Vice Provost for Research, the respective schools, centers, and institutes of GW’s growing research program, and Research Technology Services.
+
+In addition to Pegasus, RTS offers smaller clusters for teaching and HTCondor applications to the GW community, and assists managing several legacy research groups’ clusters throughout the GW research community.
+
+To support research computing, RTS also operates a Data Transfer Node, leveraging the Globus toolkit, including connectors to the Google Drive and Box cloud storage platforms to enable data transfer, collaboration, and research data archive.
+
+As part of GW’s continued institutional commitment to deep learning and AI research, GW is currently planning to augment existing HPC resources with more GPU-intensive systems, including two nodes with 8 high performance Nvidia A100 GPUs. While these nodes will be available to enable advanced GPU-based computational research throughout GW, priority access will be granted to any extramurally funded AI and deep learning efforts.
+
+| Type | # of Nodes | CPU/node | RAM | V100 | A100 | GH200 |
+| --- | --- | --- | --- | --- | --- | --- |
+| CPU-Only | 105 | 40 | 96 GB |  |  |  |
+| CPU-Only | 53 | 40 | 384 Gb |  |  |  |
+| CPU-Only | 25 | 40 | 192 Gb |  |  |  |
+| CPU-Only | 4 | 36 | 3 TB |  |  |  |
+| CPU-Only | 1 | 192 | 2 TB |  |  |  |
+| GPU-enabled 1x | 12 | 36 | 384 GB | 12 |  |  |
+| GPU-enabled 2x | 9 | 36 | 384 GB | 18 |  |  |
+| GPU-enabled 4x | 22 | 36 | 384 GB | 88 |  |  |
+| GPU-enabled 8x | 2 | 104 | 1 TB |  | 16 |  |
+| GPU-enabled GH | 2 | 72 | 576 GB |  |  | 2 |
+
+## Data Center and Network Facilities
+
+The majority of GW’s research computing facilities, including the Pegasus HPC cluster, reside at the GW Virginia Science and Technology Campus (VSTC) Enterprise Hall. The VSTC campus is a world-class center of collaboration with centers, institutes and laboratories conducting interdisciplinary research in many growing fields. Faculty, graduate students, research scientists, and government and corporate partners conduct advanced research in well-equipped facilities. This VTSC data center is a 6,100 square foot data center facility with diesel generators exceeding one megawatt of capacity providing up to 36 hours of generator runtime.
+
+In addition to the VSTC data center, the Science and Engineering Hall on the GW Foggy Bottom campus houses other research systems, especially for research groups in the GW School of Engineering and Applied Science. The SEH data center is approximately 1,300 square feet with a 1500kW diesel generator, providing 55 hours of 100% runtime.
+
+The GW campus network is extensively connected to both the commercial and research and education networks. The network is served by three different commercial ISPs in three locations, providing three full internet route tables, both legacy IP and IPv6. Commercial peering provides direct access to over 200 networks.
+
+GW operates the Capital Area Advanced Research and Education Network (CAAREN). Built on a 140-kilometer optical service with a deployed capacity of 4x100 Gbps + 8x10Gbps with a maximum capacity reaching well into the multi-terabit range. The primary function of CAAREN is to connect capital area universities and research centers to national and international research networks via Internet2.
+
+CAAREN is an initiative launched in 2013 designed to deliver a high-performance research and education infrastructure facilitating world-class research, education and knowledge sharing in the national capital region. CAAREN offers research network services to government, education, and research organizations, as well as some private-sector organizations within the District of Columbia and Northern Virginia. CAAREN enhances collaboration and reduces barriers to research, education, and health applications, supporting the national capital region as a center of cutting-edge knowledge. Current customers include GW, Georgetown University, American University, The World Bank, and Children's National Medical Center.
+
+## Data Management and Storage
+
+In addition to providing support for many computational applications, RTS offers storage and research database management services, as well as an instance of the REDCap data management platform.
+
+Research Technology Services (RTS) continually invests in new technologies to support and provide to researchers across GWU data storage platforms for a wide variety of research applications. The Research NAS service is a “scale-out network attached storage”, with approximately one petabyte (1 PB) of usable storage, replicated between two locations for resiliency (total 2 PB). The solution is able to scale with additional demand and is on a regular technology refresh cycle of four-to-five year cadence. The Research NAS system is deployed in the VSTC Enterprise Hall data center, near the Pegasus HPC cluster, and in GW’s Foggy Bottom data center, near many of GW’s data intensive research labs and centers. Research groups are granted initial allocation of 10 TB, with additional storage available on a per-TB additional cost basis.
