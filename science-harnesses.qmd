@@ -898,19 +898,13 @@ Institutional policy, IRB requirements, data-use agreements, and disciplinary st
 
 ### C1. Request an HPC GPU {#c1--request-an-hpc-gpu}
 
-Example GH200 request:
+If you do not yet have GW HPC access, submit the [GW High Performance Computing Access Request](https://it.gwu.edu/high-performance-computing-access-request) and obtain access before proceeding with the HPC steps.
 
-```bash
-srun \
-  --partition=superChip \
-  --gres=gpu:gh200:1 \
-  --cpus-per-task=4 \
-  --mem=80G \
-  --time=02:00:00 \
-  --pty bash
-```
+We have three types of GPU currently available with HPC. Below is how you request one of these.
 
-L40S
+---
+
+#### L40S 48 GB
 
 ```bash
 srun \
@@ -918,16 +912,60 @@ srun \
   --gres=gpu:l40s:1 \
   --cpus-per-task=4 \
   --mem=32G \
-  --time=04:00:00 \
+  --time=02:00:00 \
   --pty bash
 ```
 
-Then:
+This was a successful configuration for `qwen3-coder:30b`.
+
+---
+
+#### A100 80 GB
+
+```bash
+srun --partition=gpu --gres=gpu:a100:1 --cpus-per-task=4 --mem=80G --time=02:00:00 --pty bash
+```
+
+---
+
+#### GH200 Grace Hopper
+
+```bash
+srun \
+  --partition=superChip \
+  --gres=gpu:gh200:1 \
+  --cpus-per-task=4 \
+  --mem=64G \
+  --time=02:00:00 \
+  --pty bash
+```
+
+A shorter exploratory request:
+
+```bash
+srun \
+  --partition=superChip \
+  --gres=gpu:gh200:1 \
+  --cpus-per-task=4 \
+  --mem=80G \
+  --time=00:30:00 \
+  --pty bash
+```
+
+After receiving the allocation:
 
 ```bash
 hostname
-Nvidia-smi
+nvidia-smi
 ```
+
+To determine the actual GH200 GPU memory configuration:
+
+```bash
+nvidia-smi --query-gpu=name,memory.total --format=csv
+```
+
+Do not assume whether GW's GH200 is the approximately 96 GB or 144 GB HBM configuration until checking the actual node.
 
 ---
 
@@ -935,23 +973,42 @@ Nvidia-smi
 
 If you do not yet have GW HPC access, submit the [GW High Performance Computing Access Request](https://it.gwu.edu/high-performance-computing-access-request) and obtain access before proceeding with the HPC steps.
 
-For GH200:
-
 ```bash
 ml ollama
-OLLAMA_HOST=0.0.0.0:11434 \
-OLLAMA_CONTEXT_LENGTH=131072 \
-ollama serve &
 ```
 
-For L40S (viz):
+Then
+
+#### L40S
 
 ```bash
-ml ollama
 OLLAMA_HOST=0.0.0.0:11434 \
-OLLAMA_CONTEXT_LENGTH=65536 \
-ollama serve &
+OLLAMA_CONTEXT_LENGTH=65536 ollama serve &
 ```
+
+#### A100
+
+```bash
+OLLAMA_HOST=0.0.0.0:11434 \
+OLLAMA_CONTEXT_LENGTH=131072 ollama serve &
+```
+
+#### GH200
+
+```bash
+OLLAMA_HOST=0.0.0.0:11434 \
+OLLAMA_CONTEXT_LENGTH=131072 ollama serve &
+```
+
+Potentially increase toward 256K after checking GPU memory use and model behavior.
+
+#### Model/GPU combinations tested or considered
+
+| GPU | Model | Starting context |
+| ----- | ----- | ----- |
+| L40S 48 GB | `qwen3-coder:30b` | 64K |
+| A100 80 GB | `qwen3-coder-next:q4_K_M` | 128K+ |
+| GH200 | `qwen3-coder:30b` Q4 | 128K → potentially 256K |
 
 **Security note:** `0.0.0.0` causes Ollama to listen on the compute node's network interface rather than only its loopback interface. This was necessary for the tested Pegasus tunneling method and should be considered when determining whether the architecture is appropriate for sensitive research information.
 
