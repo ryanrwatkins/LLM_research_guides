@@ -57,7 +57,7 @@ Put differently, the amount of control we need should rise with the methodologic
 
 # Why Read/Use This {#why-read-use-this}
 
-The goal of this document is to provide guidance for using an open source harness  along with open weights LLM’s in your research tasks.  This is an “open science” focused alternative to using Claude Code, OpenAI Codex, and other similar (i.e., blackbox harness \+ blackbox model) proprietary tools where you don’t really know what skills agents are using, the code that drives the tools they utilize, or even which model version your prompts are being routed to after they leave your computer. For some scientific tasks, the hardware on which the models run might also have subtle influences on the results you get. 
+The goal of this document is to provide guidance for using an open-source harness along with open-weight LLMs in your research tasks. This is an “open science” focused approach that emphasizes inspectable software, documented model versions, and explicit research procedures. Tools such as Claude Code and OpenAI Codex also support skills, tools, and customization, but visibility into their implementation and hosted models varies by product and deployment. For some scientific tasks, the hardware on which the models run might also have subtle influences on the results you get.
 
 I have selected OpenCode as my open source harness since it seems (based on my informal assessment) to be the best option as of today, and likewise I selected Ollama for managing open weights models since it balances ease of use and versatility.  You could easily apply the same guidance to other harness tools and model managers.
 
@@ -136,7 +136,7 @@ A traditional computational function generally performs specified operations on 
 * the hardware the model runs on; and  
 * interactions among these components.
 
-In addition, if you are using proprietary LLMs (e.g., OpenAI's GPT models, Anthropic’s Claude models) there may be multiple iterations of the model to improve performance. These “snapshots” are often noted by the date (e.g., gpt-4o-2024-08-06) or versions (e.g., claude-sonnet-4-6), and can only be specified when prompting through API calls. In other words, if you go through the web interface you will not know which (or which combination) specific model, defined by its weights matrix, produced your outputs. Thus, even for “guided assistance” in your research, if you are using proprietary models then accessing specific instances through API requests is important for documenting your research and for possible reproduction later. Do note, however, that proprietary models are routinely deprecated and this can limit the lifespan for possible reproduction (e.g., claude-sonnet-4-20250514 was deprecated just a year after it was released), whereas open weights models can be downloaded and stored for later use.
+Proprietary model providers may offer dated snapshots or version identifiers through their APIs, while web interfaces may not expose the exact model version used for each response. Where supported, specifying a model version helps document the research workflow, but hosted models can later be changed or retired. Open-weight models can be downloaded and preserved for later use. In either case, record the model identifier, inference settings, software versions, and computing environment; pinning a model alone does not guarantee identical outputs.
 
 Reproducibility with LLMs does not generally mean obtaining the **identical sequence of tokens**.
 
@@ -152,29 +152,39 @@ Or that is to say:
 
 ---
 
-# 2\. A Continuum of Harness Choices {#section-2--a-continuum-of-harness-choices}
+# 2\. Understanding and Choosing Research Harnesses {#section-2--a-continuum-of-harness-choices}
 
-Researchers can think of harnesses along a continuum.
+## 2.0 What Is a Harness, and Why Does Open Source Matter?
 
-|  | Claude Code, OpenAI Codex, etc. | OpenCode, or similar open harnesses | Custom science harness |
-| ----- | ----- | ----- | ----- |
-| **Reproducibility potential** | **Lower** | **Medium–High** | **High** |
-| Transparency | Lower | Higher | Highest |
+A large language model (LLM) harness is the software environment that surrounds a model and determines how it interacts with users, data, tools, and other agents. A harness can provide access to files, execute code, coordinate multistep tasks, apply specialized instructions, and establish safeguards and validation procedures—capabilities that extend beyond those of the underlying model.
+
+Open-source harnesses are particularly valuable for scientific research because researchers can inspect, modify, and extend the software governing these interactions. Rather than relying entirely on a proprietary environment, researchers can select their models, integrate discipline-specific tools, define methodological procedures, and establish controls appropriate to their research. Importantly, they can also share and version these configurations so other researchers can inspect or reuse them.
+
+Several open-source harnesses are available. This guide focuses on [OpenCode](https://opencode.ai/), which combines many of the capabilities of commercial AI coding agents with the flexibility to use open-weight models running locally or on institutional high-performance computing (HPC) infrastructure. The broader principles discussed here can also be applied to other open-source agent frameworks.
+
+## 2.1 A Continuum of Harness Choices
+
+Researchers can think of harnesses along a continuum. The comparisons below describe potential capabilities rather than guaranteed outcomes; actual control and reproducibility depend on the implementation and configuration.
+
+| | Claude Code, OpenAI Codex, etc. | OpenCode or similar open harnesses | Custom science harness |
+|---|---|---|---|
+| Reproducibility potential | Lower–Medium | Medium–High | High |
+| Transparency | Lower | Higher | Potentially highest |
 | Open-weight model support | Varies | Yes (local or via API) | Yes (local or via API) |
 | Proprietary models | Yes | Yes, via API | Yes, via API |
-| Technical skill required | Low | Medium | High |
+| Technical skill required | Low–Medium | Medium | High |
 | GPU access | Vendor, local where supported | Local, HPC, or API | Local, HPC, or API |
 | Workflow customization | Medium | High | Very high |
-| Control over tools | Limited | High | Very high |
-| Control over logging | Medium | High | Very high |
+| Control over tools | Varies by product | High | Very high |
+| Control over logging | Varies by product | High | Very high |
 | Control over human review points | Medium | High | Very high |
-| Institutional infrastructure | Limited | Possible | Possible |
+| Institutional infrastructure | Limited or product-dependent | Possible | Possible |
 
 The continuum involves a tradeoff:
 
-| More convenience |  |  |  |                          More explicit control  |
-| :---: | ----- | :---: | :---: | ----- |
-| **Claude/Codex** | **→** | **OpenCode** | **→** | **Custom research harness** |
+**More convenience $\leftrightarrow$ More explicit control**
+
+Claude Code / Codex → OpenCode → Custom research harness
 
 A researcher doing exploratory coding may reasonably choose Claude Code.
 
@@ -182,14 +192,14 @@ A laboratory developing a repeatable research procedure may prefer OpenCode with
 
 A research team whose LLM workflow directly produces study findings may decide to encode the process in explicit Python scripts.
 
----
+These categories are not mutually exclusive. A customized scientific harness can be built on top of OpenCode, and a proprietary agent may also support substantial customization. The most important distinction is the degree of control, transparency, and reproducibility required for the specific research task.
 
-## 2.1 Why OpenCode Is an Interesting Middle Ground {#section-2-1--why-opencode-is-an-interesting-middle-ground}
+## 2.2 Why OpenCode Is an Interesting Middle Ground {#section-2-1--why-opencode-is-an-interesting-middle-ground}
 
 OpenCode provides many of the agent capabilities associated with commercial systems such as Claude Code and Codex while allowing researchers to choose the model and computing infrastructure.
 
 | Capability | OpenCode | Claude Code / Codex comparison |
-| ----- | :---: | :---: |
+|---|---|---|
 | Read/write/edit entire repository | ✅ | Core feature |
 | Run shell commands | ✅ | ✅ |
 | Run tests/builds and fix failures | ✅ | ✅ |
@@ -198,8 +208,8 @@ OpenCode provides many of the agent capabilities associated with commercial syst
 | Autonomous multi-step work | ✅ | ✅ |
 | Subagents | ✅ | ✅ |
 | Custom agents | ✅ | ✅ |
-| Web search | ✅ | ✅ |
-| Fetch/read webpages | ✅ | ✅ |
+| Web search | ✅ When configured | Available, product-dependent |
+| Fetch/read webpages | ✅ When configured | ✅ |
 | MCP servers | ✅ | ✅ |
 | Reusable `SKILL.md` skills | ✅ | ✅ |
 | Persistent project instructions | ✅ `AGENTS.md` | Similar mechanisms |
@@ -208,7 +218,7 @@ OpenCode provides many of the agent capabilities associated with commercial syst
 | LSP/code intelligence | ✅ | Similar |
 | Todo/task tracking | ✅ | ✅ |
 | Different models per agent | ✅ | Varies |
-| Local/open-weight inference | **✅ Major advantage** | Not the normal commercial workflow |
+| Local/open-weight inference | ✅ Major advantage | Product-dependent |
 
 This means the harness can remain relatively sophisticated while the researcher controls:
 
@@ -227,20 +237,93 @@ OpenCode
 
 For many researchers, this may provide a useful compromise between an opaque commercial agent and building an entire scientific workflow from scratch.
 
-## 2.2 Comparative Logging Capabilities {#comparative-logging-capabilities}
+Importantly, OpenCode can be used with locally hosted open-weight models, commercially hosted models, or models served through institutional HPC resources. Researchers can therefore choose a computing environment that aligns with their performance requirements, data-management obligations, and methodological expectations.
 
-| Feature | OpenCode | Proprietary Platforms (Claude, Codex/OpenAI) |
-| ----- | ----- | ----- |
-| **Comprehensive Input/Output Archiving** | **Complete local logging**. Every raw token, hidden prompt, systemic instruction, and multi-agent back-and-forth is captured in plaintext or JSON files. | **Restricted or siloed**. Interaction history is stored behind cloud accounts, can be modified/deleted by the provider, and frequently hides systemic system prompts. |
-| **MCP & Tool Call Auditing** | **Granular logging** of which Model Context Protocol (MCP) server was hit, what parameters were sent, and the exact tool output received. | **Black-box integration**. Internal tool calls (like advanced data analysis or browsing) lack raw parameter logging and full execution traces. |
-| **Model Version Determinism** | **Total control**. If you hook up local open-weights models (via Ollama/vLLM), the architecture, weights, and hyper-parameters remain completely static for replication. | **Dynamic version shift**. APIs are subject to rolling updates, deprecations, and backend fine-tuning, meaning a prompt run today may yield different results in 6 months. |
-| **Data Privacy & IRB Compliance** | **Zero data leakage**. PII, raw interview transcripts, and restricted datasets stay on local bare metal, preventing unauthorized model re-training. | **Cloud transit risk**. Transmitting data to third-party servers requires complex institutional data-sharing agreements (BAAs/DSAs). |
+## 2.3 Comparative Logging Capabilities {#comparative-logging-capabilities}
+
+For scientific research, the ability to document what an LLM-based agent actually did may be as important as its ability to complete a task. Open-source harnesses provide opportunities to capture the instructions, tool interactions, computational environment, and intermediate outputs that influence the research process.
+
+| Feature | OpenCode | Proprietary platforms (Claude Code, Codex, etc.) |
+|---|---|---|
+| Input/output archiving | Stores local session histories and tool interactions; additional logging or exports may be needed for complete research records. | Session histories and exports may be available, but access and retention vary by product and deployment. |
+| MCP and tool-call auditing | Tool invocations and results can be inspected; structured research audit trails can be added through plugins or external logging. | Many tool calls are visible, but completeness of logs and access to internal operations vary. |
+| Model version control | Can use pinned, locally stored open-weight models with documented inference configurations. | Some APIs support pinned model versions, while hosted services may change or retire models. |
+| Data privacy and institutional compliance | Local execution and inference can keep research data within institutional infrastructure, provided network access and integrations are appropriately configured. | Requires assessment of provider policies, data processing, retention, contracts, and institutional approvals. |
+| Workflow reproducibility | Researchers can version prompts, configurations, skills, scripts, dependencies, and execution records. | Some equivalent controls are available, but access to underlying implementations and model versions may be restricted. |
+
+OpenCode does not automatically guarantee comprehensive research logging. Researchers may need to configure additional logging, record model and software versions, preserve prompts and tool outputs, and document the computing environment. Similarly, using an open-weight model does not guarantee identical outputs across executions.
+
+The advantage is that the researcher has greater opportunity to establish and inspect these controls rather than relying exclusively on the defaults of a proprietary platform.
+
+## 2.4 Extending Open-Source Harnesses for Scientific Research {#extending-open-source-harnesses}
+
+One of the most useful features of open-source harnesses is their expandability. Researchers do not need to develop every capability from scratch. They can add existing skills, specialized agents, scientific tools, and more comprehensive orchestration frameworks developed by others, then adapt them to their own research questions and methodologies.
+
+These extensions can range from a single reusable instruction file to an elaborate system that coordinates multiple agents, evaluates results, and adjusts how the harness operates.
+
+### Levels of Harness Customization
+
+A useful distinction is between three levels of customization:
+
+#### 1. Skills: Adding specialized procedures
+
+Skills are typically the simplest extension. A skill is often defined in a `SKILL.md` file that gives the agent instructions for carrying out a particular task. It can also reference scripts, examples, templates, and supporting documentation.
+
+For example, a researcher might create a skill that generates synthetic datasets to evaluate whether a proposed statistical analysis is feasible. The skill could specify the types of data to generate, conditions to simulate, analyses to perform, and results to report. This allows the same procedure to be applied repeatedly rather than reconstructed through separate prompts.
+
+#### 2. Specialized agents and workflows: Coordinating research activities
+
+More advanced extensions can establish specialized agents with different responsibilities, such as literature reviewer, statistical analyst, programmer, or methodological reviewer. These agents may operate sequentially or collaboratively, with explicit responsibilities, tools, and review points.
+
+For example, a research workflow might have one agent develop an analysis script, another execute validation tests, and a third independently review the results for methodological problems.
+
+#### 3. Harness optimization: Improving the agent's operating environment
+
+Experimental approaches such as Harness² go beyond adding predefined capabilities. They attempt to improve the harness itself by proposing changes to instructions, tools, skills, or agent configurations, testing the consequences, and retaining improvements supported by execution evidence.
+
+These approaches may improve performance on complex tasks without changing the underlying model, but generally require additional infrastructure, model executions, computational resources, and evaluation.
+
+### Examples of Open-Source Extensions
+
+The following projects illustrate different ways researchers can expand an OpenCode-based environment. They range from relatively straightforward collections of reusable skills to more sophisticated agent orchestration and harness optimization frameworks.
+
+| Project | What it adds | Why it might help researchers |
+|---|---|---|
+| [Scientific Agent Skills (K-Dense)](https://github.com/K-Dense-AI/scientific-agent-skills) | Reusable scientific skills covering statistics, data analysis, scientific visualization, bioinformatics, chemistry, and other disciplines. | Add specialized scientific procedures and knowledge without creating every skill from scratch. |
+| [Academic Research Skills for OpenCode](https://github.com/timpara/opencode-academic-research) | Research-focused skills, commands, verification scripts, and multi-agent workflows for literature reviews, academic writing, and peer review. | Provide structured research and publication workflows with specialized roles and review procedures. |
+| [OpenCode Agent Orchestration Kit (OAK)](https://github.com/jcarlosrodicio/opencode-agent-orchestration-kit) | Multiple specialized agents, structured workflows, explicit handoffs, and validation procedures. | Coordinate complex research software projects with separate planning, implementation, and review activities. |
+| [Harness² (Google Research)](https://github.com/google-research/harness2) | Experimental framework for testing and refining prompts, skills, tools, and other components of an agent harness. | Evaluate and potentially improve agent performance through iterative harness optimization rather than model retraining. |
+
+These examples differ substantially in scope and installation requirements. A single scientific skill may require little more than adding a file to the appropriate directory. More elaborate frameworks may introduce additional software dependencies, specialized agent configurations, model calls, or new execution procedures. Compatibility with locally hosted models and HPC environments should be evaluated individually.
+
+### Why Expandability Matters for Scientific Research
+
+The central benefit is not simply making an AI agent more capable. It is allowing researchers to make their methodological decisions explicit and encode those decisions into the research workflow.
+
+Rather than relying entirely on a general-purpose agent to decide how a scientific task should be performed, researchers can specify:
+
+- Which methodological procedures should be followed;
+- Which scientific tools and software packages should be used;
+- What assumptions and conditions should be checked;
+- How outputs should be validated;
+- Which decisions require human review;
+- What information should be recorded for subsequent inspection or reproduction.
+
+These configurations can become shareable research artifacts. A laboratory might maintain its own collection of tested skills, agent configurations, validation scripts, and workflow templates. Other researchers could inspect, reuse, or adapt them while retaining a record of the methods applied.
+
+For example, a research team might develop a standardized skill for generating synthetic data to test proposed analysis plans. That skill could be shared with colleagues, incorporated into future projects, and updated as methodological practices evolve.
+
+However, open source, transparency, and customization do not automatically guarantee scientifically valid or reproducible results. A fully inspectable harness can still contain flawed instructions, inappropriate statistical methods, undocumented dependencies, or unreliable agent decisions. Similarly, installing a third-party skill does not establish that its procedures have been scientifically validated.
+
+Researchers remain responsible for evaluating whether these extensions perform as intended, documenting their configurations, and assessing their consequences for the validity and reproducibility of the research. Third-party extensions should also be reviewed for security, permissions, external network access, and compliance with institutional data-protection requirements.
+
+Ultimately, the value of an open-source research harness is that it gives researchers more control over the AI-enabled processes that contribute to producing scientific evidence. As LLMs become more integrated into research methods, the ability to inspect, test, document, and improve these processes becomes an increasingly important part of scientific rigor.
 
 ---
 
 # 3\. Architecture Choices {#section-3--architecture-choices}
 
-The location of the harness, model, and data can also be separated.
+The location of the harness, model, and data can also be separated. The following examples focus on OpenCode with open-weight models served by Ollama locally or on HPC. These deployment choices are separate from the harness customization choices in Section 2.
 
 |  | Model on local computer | Model on HPC |
 | ----- | :---: | :---: |
@@ -257,7 +340,7 @@ Each option serves a different purpose.
 
 Use this architecture when:
 
-* the local computer has sufficient GPU or unified memory (e.g., on a Mac this is probably a M4/5/6 Pro or Max;  
+* the local computer has sufficient GPU or unified memory for the chosen model;
 * research files should remain on the local computer;  
 * access to HPC is unnecessary or inconvenient;  
 * the required open-weight model can run efficiently on the available hardware;  
@@ -1332,7 +1415,7 @@ Runs the script you want Slurm to execute.
 
 ### `SKILL.md`: Encoding Research Practice
 
-One particularly interesting capability is the use of reusable skills.
+Building on the customization levels in [Section 2.4](#extending-open-source-harnesses), this section illustrates how reusable skills can encode research procedures.
 
 A prompt says:
 
@@ -1428,7 +1511,7 @@ but also:
 
 > 
 
-The resulting [skill.md](http://skill.md) is a mix of LLM prompts (non-deterministic) and Python code (deterministic) that guides the LLM through the procedures of using an analysis-sandbox.  For example, it will ask for the researcher for the raw (“real”) data and create a synthetic pair for it, it will then run a number of tests to explore if the proposed analyses can happen given the constraints of the data (for instance, if there are too much missing data from the control group then certain intended analyses may not be feasible).  It then gives the researcher a report on what, if any, changes they should consider to the analysis plan before they ever look at the data.
+The resulting `SKILL.md` is a mix of LLM prompts (non-deterministic) and Python code (deterministic) that guides the LLM through the procedures of using an analysis-sandbox.  For example, it will ask for the researcher for the raw (“real”) data and create a synthetic pair for it, it will then run a number of tests to explore if the proposed analyses can happen given the constraints of the data (for instance, if there are too much missing data from the control group then certain intended analyses may not be feasible).  It then gives the researcher a report on what, if any, changes they should consider to the analysis plan before they ever look at the data.
 
 ---
 
@@ -1509,7 +1592,7 @@ OpenCode remains a general-purpose agent harness.
 
 For some research applications, even that may introduce more abstraction and autonomous behavior than is desirable.
 
-The highest-control option is to build a **custom research harness**.
+A **custom research harness** can give researchers more explicit control over the procedure. It may extend OpenCode with tested skills, tools, and workflows, or use a standalone implementation.
 
 A custom harness does not have to resemble Claude Code or OpenCode.
 
@@ -1625,9 +1708,7 @@ It may be a deliberately designed component of the research methodology.
 
 ## 6.1 Harness Choice Is a Methodological Decision {#section-6-1-harness-choice-is-a-methodological-decision}
 
-The different architectures should not be viewed merely as competing software products.
-
-They represent different amounts of abstraction and methodological control.
+The harness choices in Section 2 represent different opportunities for controlling abstraction and research procedures. They overlap: a custom workflow can build on an open general-purpose harness. The deployment architectures in Section 3 address the separate question of where the harness, model, and data reside.
 
 ```text
 Commercial agent
