@@ -1180,10 +1180,25 @@ This configuration was successfully tested.
 
 ### C6. Start Local OpenCode Against the HPC Model {#c6--start-local-opencode-against-the-hpc-model}
 
-For a larger GPU:
+Keep the SSH tunnel from C4 running. In a terminal **on your Mac**, move into your local research project and launch OpenCode:
 
 ```bash
-opencode --model ollama/qwen3-coder:30b
+cd /path/to/local/research-project
+opencode
+```
+
+Then, **inside OpenCode**, open the model selector:
+
+```text
+/models
+```
+
+Select `ollama/qwen3-coder:30b`, the HPC-hosted model configured in C3. If it is not listed, check that the provider and model are available in the current project and verify the tunnel as described in C5 before continuing.
+
+The [OpenCode v2 model documentation](https://opencode.ai/v2/docs/models/) describes this interactive selection sequence. The selection applies to the current session; it does not change the configured default. For a non-interactive command-line run, `--model` remains available with `opencode run`, for example:
+
+```bash
+opencode run --model ollama/qwen3-coder:30b "Summarize this project's README."
 ```
 
 The resulting architecture is:
@@ -1234,7 +1249,9 @@ opencode web --hostname 127.0.0.1 --port 4096
 
 Use `opencode web` for the browser interface. `opencode serve` is the headless-server alternative.
 
-Open [http://localhost:4096](http://localhost:4096) in Chrome or Firefox if it does not open automatically. Select the HPC-hosted Ollama model configured in C3, such as `ollama/qwen3-coder:30b`, and start or reopen a session.
+Open [http://localhost:4096](http://localhost:4096) in Chrome or Firefox if it does not open automatically. Open your local research project and start or reopen a session. In the browser's model selector, choose `ollama/qwen3-coder:30b`, the HPC-hosted Ollama model configured in C3, before sending a prompt.
+
+As in C6, choose the model within the interactive session. Do not add `--model` to the `opencode web` command; the command-line example using that flag in C6 is for `opencode run`. Confirm the selected model when reopening a session, since a session's existing selection can take precedence over the configured default. See the [OpenCode v2 model documentation](https://opencode.ai/v2/docs/models/) for selection and default behavior.
 
 No password setup is needed for this local-only example. The explicit `127.0.0.1` binding keeps the OpenCode server accessible only from your Mac; keep that binding when using this configuration.
 
