@@ -215,8 +215,8 @@ OpenCode provides many of the agent capabilities associated with commercial syst
 | Persistent project instructions | ✅ `AGENTS.md` | Similar mechanisms |
 | Tool permissions/approvals | ✅ | ✅ |
 | Custom tools | ✅ | ✅ |
-| LSP/code intelligence | ✅ | Similar |
-| Todo/task tracking | ✅ | ✅ |
+| LSP/code intelligence | No LSP execution in v2; use lint/typecheck/compiler commands | Product-dependent |
+| Todo/task tracking | Experimental opt-in in v2 | ✅ |
 | Different models per agent | ✅ | Varies |
 | Local/open-weight inference | ✅ Major advantage | Product-dependent |
 
@@ -294,7 +294,7 @@ The following projects illustrate different ways researchers can expand an OpenC
 | [OpenCode Agent Orchestration Kit (OAK)](https://github.com/jcarlosrodicio/opencode-agent-orchestration-kit) | Multiple specialized agents, structured workflows, explicit handoffs, and validation procedures. | Coordinate complex research software projects with separate planning, implementation, and review activities. |
 | [Harness² (Google Research)](https://github.com/google-research/harness2) | Experimental framework for testing and refining prompts, skills, tools, and other components of an agent harness. | Evaluate and potentially improve agent performance through iterative harness optimization rather than model retraining. |
 
-These examples differ substantially in scope and installation requirements. A single scientific skill may require little more than adding a file to the appropriate directory. More elaborate frameworks may introduce additional software dependencies, specialized agent configurations, model calls, or new execution procedures. Compatibility with locally hosted models and HPC environments should be evaluated individually.
+These examples differ substantially in scope and installation requirements. A single scientific skill may require little more than adding a file to the appropriate directory. More elaborate frameworks may introduce additional software dependencies, specialized agent configurations, model calls, or new execution procedures. Compatibility with OpenCode v2, locally hosted models, and HPC environments should be evaluated individually. Existing skill files remain supported, but v1 plugins and server API integrations require migration; see the [v2 migration guide](https://opencode.ai/v2/docs/migrate-v1/).
 
 ### Why Expandability Matters for Scientific Research
 
@@ -432,16 +432,16 @@ ollama list
 
 ### A3. Install OpenCode {#a3--install-opencode}
 
-Install OpenCode:
+Install OpenCode v2. If upgrading a package-managed v1 installation, remove it with its package manager first; the v2 curl installer replaces the v1 binary. Preserve your configuration while validating the upgrade. See the [v2 installation guide](https://opencode.ai/v2/docs/).
 
 ```bash
-curl -fsSL https://opencode.ai/install | bash
+curl -fsSL https://opencode.ai/v2/install | bash
 ```
 
 Alternatively, using Homebrew:
 
 ```bash
-brew install anomalyco/tap/opencode
+brew install anomalyco/tap/opencode-v2
 ```
 
 If OpenCode is not immediately available after installation, reload the shell:
@@ -518,22 +518,22 @@ mkdir -p ~/.config/opencode
 nano ~/.config/opencode/opencode.json
 ```
 
-Example configuration:
+Example configuration using the [native v2 provider format](https://opencode.ai/v2/docs/providers/). Supported v1 provider syntax can still be read; converting an existing working configuration is optional. Merge settings into your existing file rather than replacing unrelated settings.
 
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
+  "providers": {
     "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
       "name": "Ollama Local",
-      "options": {
-        "baseURL": "http://127.0.0.1:11434/v1"
-      },
       "models": {
         "qwen3-coder:30b": {
           "name": "Qwen3 Coder 30B"
         }
+      },
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:11434/v1"
       }
     }
   }
@@ -551,13 +551,13 @@ You can also set the model as the OpenCode default:
 
 ### A7. Optional: Enable Web Search {#a7--optional--enable-web-search}
 
-If web research is needed as part of the workflow, launch OpenCode with:
+Start OpenCode normally:
 
 ```bash
-OPENCODE_ENABLE_EXA=1 opencode
+opencode
 ```
 
-This allows the OpenCode agent to combine local files and tools with web research.
+When first asked to search the web, v2 requests permission and a search-provider selection. Use `/connect` to configure a search account if needed; Exa uses `EXA_API_KEY`. See the [v2 web-search documentation](https://opencode.ai/v2/docs/websearch/). This replaces the guide's earlier `OPENCODE_ENABLE_EXA` launch instructions.
 
 ---
 
@@ -734,7 +734,7 @@ Potentially increase toward 256K after checking GPU memory use and model behavio
 First time only:
 
 ```bash
-curl -fsSL https://opencode.ai/install | bash
+curl -fsSL https://opencode.ai/v2/install | bash
 ```
 
 If necessary:
@@ -756,25 +756,25 @@ nano ~/.config/opencode/opencode.json
 ```
 
 ```json
-{  
-  "$schema": "https://opencode.ai/config.json",  
-  "provider": {  
-    "ollama": {  
-      "npm": "@ai-sdk/openai-compatible",  
-      "name": "Ollama Local",  
-      "options": {  
-        "baseURL": "http://127.0.0.1:11434/v1"  
-      },  
-      "models": {  
-        "qwen2.5-coder:7b": {  
-          "name": "Qwen 2.5 Coder 7B"  
-        },  
-        "qwen3-coder:30b": {  
-          "name": "Qwen3 Coder 30B"  
-        }  
-      }  
-    }  
-  }  
+{
+  "$schema": "https://opencode.ai/config.json",
+  "providers": {
+    "ollama": {
+      "name": "Ollama Local",
+      "models": {
+        "qwen2.5-coder:7b": {
+          "name": "Qwen 2.5 Coder 7B"
+        },
+        "qwen3-coder:30b": {
+          "name": "Qwen3 Coder 30B"
+        }
+      },
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      }
+    }
+  }
 }
 ```
 Check installed models:
@@ -805,11 +805,13 @@ Move into the project:
 cd /scratch/<group-or-user-folder>/<project>
 ```
 
-Launch with web search enabled:
+Launch OpenCode, then select your Ollama model with `/models`. For web search, configure a search provider as described in A7:
 
 ```bash
-OPENCODE_ENABLE_EXA=1 opencode
+opencode --standalone
 ```
+
+Use `--standalone` on the allocated HPC node so this terminal uses a private server instead of a shared background service. Keep the GPU allocation active.
 
 CNTL \+ P to see available commands
 
@@ -844,10 +846,10 @@ Then:
 ollama run qwen3-coder:30b
 ```
 
-Launch:
+Launch OpenCode and configure web search as described in A7 before trying the web-research prompt:
 
 ```bash
-OPENCODE_ENABLE_EXA=1 opencode
+opencode --standalone
 ```
 
 Prompt:
@@ -1102,7 +1104,7 @@ Potentially increase toward 256K after checking GPU memory use and model behavio
 First-time installation:
 
 ```bash
-curl -fsSL https://opencode.ai/install | bash
+curl -fsSL https://opencode.ai/v2/install | bash
 ```
 
 Create the global configuration:
@@ -1113,25 +1115,25 @@ nano ~/.config/opencode/opencode.json
 ```
 
 ```json
-{  
-  "$schema": "https://opencode.ai/config.json",  
-  "provider": {  
-    "ollama": {  
-      "npm": "@ai-sdk/openai-compatible",  
-      "name": "GW HPC Ollama",  
-      "options": {  
-        "baseURL": "http://127.0.0.1:11435/v1"  
-      },  
-      "models": {  
-        "qwen2.5-coder:7b": {  
-          "name": "Qwen 2.5 Coder 7B"  
-        },  
-        "qwen3-coder:30b": {  
-          "name": "Qwen3 Coder 30B"  
-        }  
-      }  
-    }  
-  }  
+{
+  "$schema": "https://opencode.ai/config.json",
+  "providers": {
+    "ollama": {
+      "name": "GW HPC Ollama",
+      "models": {
+        "qwen2.5-coder:7b": {
+          "name": "Qwen 2.5 Coder 7B"
+        },
+        "qwen3-coder:30b": {
+          "name": "Qwen3 Coder 30B"
+        }
+      },
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:11435/v1"
+      }
+    }
+  }
 }
 ```
 ---
@@ -1231,63 +1233,37 @@ This separates the **research workspace** from the **inference infrastructure**.
 
 ### C7. Optional: Use a Local Browser Interface With HPC Inference {#c7--local-browser-interface-with-hpc-inference}
 
-You can use OpenCode in a browser on your Mac while keeping model inference on HPC.
+**OpenCode, project files, and tools remain on your Mac; Ollama inference runs on HPC.** Keep the C4 tunnel and GPU allocation active, with C3's endpoint set to `http://127.0.0.1:11435/v1`.
 
-**OpenCode, your project files, and the tools remain on your Mac.** The browser connects to the local OpenCode server, and OpenCode sends model requests through the existing SSH tunnel to Ollama on the allocated GPU node.
+#### Open the browser interface
 
-#### Start the local browser interface
-
-Keep the inference tunnel from C4 running. The Ollama provider in C3 should still point to `http://127.0.0.1:11435/v1`.
-
-In another terminal **on your Mac**, move into your local project and start the web interface:
+In a terminal **on your Mac**:
 
 ```bash
 cd /path/to/local/research-project
-
-opencode web --hostname 127.0.0.1 --port 4096
+opencode pair
 ```
 
-Use `opencode web` for the browser interface. `opencode serve` is the headless-server alternative.
+Open the printed one-time link in Chrome or Firefox. It expires after five minutes. Pairing signs the browser into the password-protected local service; you do not need to set a password manually. Use local pairing without `--remote`.
 
-Open [http://localhost:4096](http://localhost:4096) in Chrome or Firefox if it does not open automatically. Open your local research project and start or reopen a session. In the browser's model selector, choose `ollama/qwen3-coder:30b`, the HPC-hosted Ollama model configured in C3, before sending a prompt.
-
-As in C6, choose the model within the interactive session. Do not add `--model` to the `opencode web` command; the command-line example using that flag in C6 is for `opencode run`. Confirm the selected model when reopening a session, since a session's existing selection can take precedence over the configured default. See the [OpenCode v2 model documentation](https://opencode.ai/v2/docs/models/) for selection and default behavior.
-
-No password setup is needed for this local-only example. The explicit `127.0.0.1` binding keeps the OpenCode server accessible only from your Mac; keep that binding when using this configuration.
+Open your project and select `ollama/qwen3-coder:30b` in the session's model selector before sending a prompt.
 
 #### Understand the two ports
 
-* **4096:** your browser connects to OpenCode on your Mac.
-* **11435:** OpenCode connects through the SSH tunnel to Ollama on HPC.
-
-You do not need an additional SSH tunnel for port `4096`.
-
-The resulting architecture is:
-
-```text
-Browser on your Mac
-        |
-        | localhost:4096
-        v
-OpenCode + local files + local tools
-        |
-        | localhost:11435
-        v
-SSH tunnel to HPC
-        |
-        v
-Ollama + model inference on the allocated GPU
-```
+* **OpenCode service port:** browser access on your Mac, normally `49374`. Use the printed URL; check with `opencode service status`.
+* **11435:** the existing SSH tunnel to Ollama on HPC. No additional browser tunnel is needed.
 
 #### Return to your session
 
-Closing the browser tab does not stop the OpenCode server. While the server is still running, reopen [http://localhost:4096](http://localhost:4096) and select your existing session.
+Closing the terminal or browser does not stop the background service. Reopen the browser, or run `opencode pair` for a fresh sign-in link. Keep your Mac awake and restore any disconnected inference tunnel before sending requests.
 
-Keep your Mac awake and the OpenCode terminal running. Model requests also require the SSH tunnel, Ollama, and the GPU allocation to remain active. If the tunnel disconnects, recreate it as described in C4 before sending another model request. Reconnecting does not guarantee that an interrupted request completed.
+To stop the shared service when finished:
 
-To stop the local web server, press **Ctrl+C** in the terminal running `opencode web`.
+```bash
+opencode service stop
+```
 
-See the [OpenCode web interface documentation](https://docs.opencode.ai/docs/web/) for additional options.
+This also disconnects other local OpenCode clients using that service. See the [v2 browser documentation](https://opencode.ai/v2/docs/cli/web/).
 
 ---
 
